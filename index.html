@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wendsom Armand Judicaël COMPAORÉ - Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- À placer juste après <body> et avant <div class="background-overlay"></div> -->
+  <!-- Navigation Fixe -->
+  <nav class="navbar">
+  <ul>
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#skills">Compétences</a></li>
+    <li><a href="#projects">Projets</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#engagements">Engagements</a></li>
+    <li><a href="#cv">CV</a></li>
+    <li><a href="#contact">Contacts</a></li>
+  </ul>
+</nav>
+  <div class="background-overlay"></div>
+
+  <header>
+    <div class="profile-container">
+      <img src="images/wendsom.jpg" alt="Photo de profil" class="profile-pic">
+      <div>
+        <h1>Wendsom Armand Judicaël COMPAORÉ</h1>
+        <p>Étudiant en ingénierie statistique & économique</p>
+      </div>
+    </div>
+  </header>
+
+  <section id="about" class="bg-blue">
+    <h2><em>À propos de moi</em></h2>
+    <p>Passionné par les statistiques, la programmation et les politiques publiques, je développe des projets en Python, R, Stata et SQL autour des données économiques, sociales et financières.</p>
+  </section>
+
+  <section id="skills" class="bg-light">
+    <h2><em>Compétences</em></h2>
+    <h3>Statistiques & Économétrie</h3>
+    <ul>
+      <li>Python, EViews, R, SPSS, Stata</li>
+    </ul>
+    <h3>Data Science</h3>
+    <ul>
+      <li>Python (Pandas, Matplotlib, Seaborn)</li>
+    </ul>
+    <h3>Bases de données</h3>
+    <ul>
+      <li>Conception relationnelle avec SQL</li>
+    </ul>
+    <h3>WebDesign</h3>
+    <ul>
+      <li>Odoo</li>
+    </ul>
+    <h3>Analyse de données</h3>
+    <ul>
+      <li>ACP, séries temporelles, modèles économétriques</li>
+    </ul>
+    <h3>Visualisation</h3>
+    <ul>
+      <li>Matplotlib, Seaborn, Excel, R, Power BI</li>
+    </ul>
+    <h3>Rédaction</h3>
+    <ul>
+      <li>LaTeX, Inkscape, Suite MS Office</li>
+    </ul>
+    <h3>Programmation</h3>
+    <ul>
+      <li>C, C++, Java</li>
+    </ul>
+  </section>
+
+  <section id="projects" class="bg-blue">
+    <h2><em>Projets</em></h2>
+    <div class="projects-list">
+      <button onclick="location.href='pages/can2024.html'">Modélisation de la CAN 2024 (R)</button>
+      <button onclick="location.href='pages/covid_acp.html'">ACP sur données COVID-19 (R/SPAD)</button>
+      <button onclick="location.href='pages/air_passengers.html'">Analyse des séries Air Passengers (Python)</button>
+      <button onclick="location.href='pages/boutique_java.html'">Application Boutique (Java)</button>
+      <button onclick="location.href='pages/econometrie_inflation.html'">Économétrie inflation (EViews)</button>
+      <button onclick="location.href='pages/sir_matlab.html'">Modèle SIR - Peste à Bombay (Matlab)</button>
+      <button onclick="location.href='pages/consommation_fr.html'">Étude consommation France (Excel)</button>
+      <button onclick="location.href='pages/loyers_ml.html'">ML - Coûts loyers à Melbourne</button>
+      <button onclick="location.href='pages/fintech.html'">Fintech & Inclusion Financière</button>
+      <button onclick="location.href='pages/tic_afrique.html'">Indice TIC en Afrique</button>
+      <button onclick="location.href='pages/pauvrete.html'">Analyse pauvreté & inégalités CI</button>
+      <button onclick="location.href='pages/webscraping.html'">Web scraping sur Python</button>
+      <button onclick="location.href='pages/rh_dashboard.html'">Tableau de bord RH (Power BI)</button>
+    </div>
+  </section>
+
+  <section id="certifications" class="bg-light">
+    <h2><em>Certifications Kaggle</em></h2>
+    <div class="cert-images">
+      <img src="images/Wendsom Judicaël COMPAORÉ - Intro to Programming.png" alt="Intro à Python">
+      <img src="images/Wendsom Judicaël COMPAORÉ - Python.png" alt="Python">
+      <img src="images/Wendsom Judicaël COMPAORÉ - Intro to Machine Learning.png" alt="Intro ML">
+    </div>
+  </section>
+
+  <section id="engagements" class="bg-blue">
+    <h2><em>Engagements & responsabilités</em></h2>
+    <ul>
+      <li>Enseignant Python - Club informatique de l’ISSP</li>
+      <li>Enseignant bénévole de mathématiques – JEC</li>
+      <li>Modérateur – Webinaire actuariel (ISSP)</li>
+      <li>Membre du jury – Examen blanc JEC (Mars 2023)</li>
+    </ul>
+  </section>
+
+  <section id="cv" class="bg-light">
+    <h2><em>Mon CV</em></h2>
+    <!-- Formulaire pour demander le CV par mail -->
+    <form action="https://formspree.io/f/mjkrzkyv" method="POST" id="cv-request-form">
+      <!-- Champ pour le prénom -->
+      <label for="prenom">Prénom :</label>
+      <input type="text" id="prenom" name="Prénom" required>
+      <!-- Champ pour le nom -->
+      <label for="nom">Nom :</label>
+      <input type="text" id="nom" name="Nom" required>
+      <!-- Champ pour WhatsApp -->
+      <label for="whatsapp">WhatsApp :</label>
+      <input type="text" id="whatsapp" name="WhatsApp" required>
+      <!-- Champ pour l'email -->
+      <label for="email">Email :</label>
+      <input type="email" id="email" name="Email" required>
+      <!-- Bouton d'envoi -->
+      <button type="submit">Recevoir le CV par mail</button>
+    </form>
+    <!-- Message de confirmation -->
+    <div id="cv-form-message"></div>
+  </section>
+
+  <!-- Début de la section Contacts -->
+  <section id="contact" class="bg-blue">
+    <!-- Titre de la section Contacts -->
+    <h2><em>Contacts</em></h2>
+    <!-- Liste des liens de contact sous forme de logos -->
+    <div class="contact-list">
+      <!-- Lien vers l'email, affiche une enveloppe rouge (Gmail) -->
+      <a href="mailto:wendjudicael@gmail.com" target="_blank" class="contact-icon contact-mail" title="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <!-- Lien vers WhatsApp, affiche le logo vert WhatsApp -->
+      <a href="https://wa.me/22656109055" target="_blank" class="contact-icon contact-whatsapp" title="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <!-- Lien vers LinkedIn, affiche le logo bleu LinkedIn -->
+      <a href="http://www.linkedin.com/in/wendsom-armand-judicael-compaore" target="_blank" class="contact-icon contact-linkedin" title="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <!-- Lien vers GitHub, affiche le logo noir GitHub -->
+      <a href="https://github.com/Wendsom" target="_blank" class="contact-icon contact-github" title="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+  </section>
+  <!-- Fin de la section Contact -->
+
+  <!-- Ajoute ce bouton pour changer de thème -->
+<button id="theme-toggle" aria-label="Changer le thème" style="position:fixed;top:18px;right:24px;z-index:1100;">
+  🌙
+</button>
+
+<!-- Script pour gérer le changement de thème -->
+<script>
+  // Sélectionne le bouton
+  const toggleBtn = document.getElementById('theme-toggle');
+  // Fonction pour changer le thème
+  function toggleTheme() {
+    // Ajoute ou enlève la classe 'light-theme' sur le body
+    document.body.classList.toggle('light-theme');
+    // Change l’icône du bouton selon le thème
+    if(document.body.classList.contains('light-theme')) {
+      toggleBtn.textContent = '☀️'; // Soleil pour le mode clair
+    } else {
+      toggleBtn.textContent = '🌙'; // Lune pour le mode sombre
+    }
+  }
+  // Ajoute l’événement au clic
+  toggleBtn.addEventListener('click', toggleTheme);
+</script>
+
+  <footer>
+    <p>&copy; 2025 Judicaël Compaoré. Tous droits réservés.</p>
+  </footer>
+</body>
+</html>

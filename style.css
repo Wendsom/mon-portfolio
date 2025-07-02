@@ -1,0 +1,359 @@
+/* filepath: c:\Users\HP\OneDrive\Desktop\MPSE\CWInternShip\mon-portfolio\style.css */
+/* Arrière-plan dynamique avec sections alternées */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #f0f0f0;
+  background: radial-gradient(#0d1b2a, #1b263b);
+  background-attachment: fixed;
+  position: relative;
+  padding-top: 56px; /* Décale le contenu pour ne pas passer sous la navbar */
+}
+
+.background-overlay::before {
+  content: "μ = Σxᵢ/n   σ = √Σ(xᵢ - μ)²/n   E(X) = ΣxP(x)   Var(X) = E(X²) - [E(X)]²";
+  position: fixed;
+  top: 20%;
+  left: 10%;
+  width: 80%;
+  font-size: 2em;
+  font-style: italic;
+  opacity: 0.03;
+  white-space: nowrap;
+  z-index: 0;
+  pointer-events: none;
+  color: white;
+}
+
+header {
+  background-color: transparent;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  position: relative;
+}
+
+.profile-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile-pic {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid #f0f0f0;
+  object-fit: cover;
+}
+
+h1 {
+  font-size: 2.2em;
+  margin: 0;
+}
+
+h2 {
+  font-size: 1.8em;
+  margin-top: 40px;
+  font-style: italic;
+  color: #ffd700;
+}
+
+h3 {
+  margin-top: 20px;
+  color: #f8f9fa;
+}
+
+section {
+  padding: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  transition: background-color 0.5s;
+}
+
+section:nth-of-type(odd) {
+  background-color: #1b263b; /* Couleur de fond pour les sections impaires */
+}
+
+section:nth-of-type(even) {
+  background-color: #415a77; /* Couleur de fond pour les sections paires */
+}
+
+ul li {
+  margin-bottom: 6px;
+}
+
+.projects-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.projects-list button {
+  background-color: #415a77;
+  color: white;
+  border: none;
+  padding: 15px;
+  font-size: 1em;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+}
+
+.projects-list button:hover {
+  background-color: #1b263b;
+}
+
+.cert-images {
+  display: flex;
+  flex-direction: column;      /* Aligne verticalement */
+  align-items: center;         /* Centre horizontalement */
+  gap: 25px;                   /* Espace entre les images */
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background: rgba(24,49,83,0.85); /* Même ton que bg-blue, légèrement transparent */
+  padding: 30px 0;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.cert-images img {
+  max-width: 100%;  /* plus large dans le cadre */
+  width: 800px;        /* largeur fixe plus grande */
+  border-radius: 10px;
+  border: 2px solid #fff;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.link-img {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #0d1b2a;
+  font-size: 0.9em;
+  color: #ccc;
+}
+
+.bg-blue {
+  background-color: #183153; /* Bleu foncé harmonieux */
+  color: #fff;
+}
+
+.bg-light {
+  background-color: #f5f7fa; /* Couleur claire harmonieuse */
+  color: #222;
+}
+
+#skills ul li {
+  font-weight: bold;
+  color: #111; /* noir profond */
+}
+
+#contact {
+  text-align: center;
+}
+
+#contact .contact-list {
+  display: flex;                        /* Affiche les logos en ligne */
+  justify-content: center;              /* Centre horizontalement */
+  gap: 32px;                            /* Espace entre les logos */
+  align-items: center;                  /* Aligne verticalement */
+  margin: 30px 0;
+  padding: 24px 0;
+  background: rgba(24,49,83,0.92);      /* Fond harmonieux avec le site */
+  border-radius: 18px;                  /* Coins arrondis pour le cadre */
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10); /* Ombre douce */
+  max-width: 520px;                     /* Largeur maximale du cadre */
+  margin-left: auto;                    /* Centre le cadre */
+  margin-right: auto;
+}
+
+#contact .contact-icon {
+  display: flex;                        /* Centre l’icône dans le bouton */
+  align-items: center;
+  justify-content: center;
+  width: 64px;                          /* Taille du bouton */
+  height: 64px;
+  border-radius: 50%;                   /* Bouton rond */
+  background: #fff;                     /* Fond blanc pour contraste */
+  font-size: 2.2em;                     /* Taille de l’icône */
+  transition: box-shadow 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* Ombre légère */
+  text-decoration: none;                /* Pas de soulignement */
+  border: 2px solid transparent;        /* Bordure invisible par défaut */
+}
+
+#contact .contact-icon:hover {
+  transform: translateY(-6px) scale(1.08); /* Effet de survol dynamique */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.16); /* Ombre plus forte au survol */
+  border-color: #ffd700;                   /* Bordure dorée au survol */
+}
+
+/* Couleurs officielles pour chaque logo */
+#contact .contact-mail i {
+  color: #d44638; /* Gmail rouge */
+}
+#contact .contact-whatsapp i {
+  color: #25d366; /* WhatsApp vert */
+}
+#contact .contact-linkedin i {
+  color: #0077b5; /* LinkedIn bleu */
+}
+#contact .contact-github i {
+  color: #181717; /* GitHub noir */
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #183153e6; /* bleu foncé, légèrement transparent */
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.navbar ul {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  margin: 0;
+  padding: 12px 0;
+  list-style: none;
+}
+
+.navbar a {
+  color: #ffd700;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.08em;
+  transition: color 0.2s;
+}
+
+.navbar a:hover {
+  color: #fff;
+}
+
+#cv a {
+  color: #fff;                /* Met le texte du lien en blanc */
+  font-weight: bold;          /* Met le texte en gras */
+  text-decoration: none;      /* Enlève le soulignement par défaut */
+  transition: text-decoration 0.2s, color 0.2s; /* Ajoute une transition douce pour la couleur et le soulignement */
+}
+
+#cv a:hover {
+  text-decoration: underline; /* Affiche un trait sous le texte au survol */
+  color: #ffd700;             /* Change la couleur du texte en doré au survol */
+}
+
+/* Thème clair (light) appliqué quand la classe 'light-theme' est sur le body */
+body.light-theme {
+  background: #f5f7fa;           /* Fond très clair */
+  color: #222;                   /* Texte foncé */
+}
+
+body.light-theme .bg-blue {
+  background: #e3eafc;           /* Bleu très clair pour les sections */
+  color: #222;                   /* Texte foncé */
+}
+
+body.light-theme .bg-light {
+  background: #fff;              /* Blanc pour les sections claires */
+  color: #222;                   /* Texte foncé */
+}
+
+body.light-theme section:nth-of-type(odd) {
+  background-color: #e3eafc;     /* Bleu très clair pour alternance */
+}
+
+body.light-theme section:nth-of-type(even) {
+  background-color: #fff;        /* Blanc pour alternance */
+}
+
+body.light-theme .navbar {
+  background: #fff;              /* Barre de navigation blanche */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+body.light-theme .navbar a {
+  color: #183153;                /* Liens bleu foncé */
+}
+
+body.light-theme .navbar a:hover {
+  color: #0077b5;                /* Bleu LinkedIn au survol */
+}
+
+body.light-theme #cv a {
+  color: #183153;                /* Lien CV bleu foncé */
+}
+
+body.light-theme #cv a:hover {
+  color: #0077b5;                /* Bleu LinkedIn au survol */
+}
+
+body.light-theme .contact-list {
+  background: #e3eafc;           /* Fond clair pour les contacts */
+}
+
+body.light-theme .contact-icon {
+  background: #fff;              /* Boutons contacts blancs */
+  border-color: #e3eafc;
+}
+
+body.light-theme footer {
+  background: #e3eafc;           /* Pied de page clair */
+  color: #222;
+}
+
+.project-image {
+  max-width: 900px;    /* Largeur maximale de l'image */
+  width: 1000%;         /* L'image s'adapte à la largeur du conteneur */
+  height: auto;        /* Garde les proportions */
+  display: block;      /* Pour éviter les espaces indésirables */
+  margin: 0 auto 24px; /* Centre l'image et ajoute un espace en bas */
+}
+
+/* Ajoute ce style à la fin de style.css */
+#cv-request-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 350px;
+  margin: 20px auto;
+  background: rgba(24,49,83,0.08);
+  padding: 18px 20px;
+  border-radius: 10px;
+}
+#cv-request-form label {
+  font-weight: bold;
+}
+#cv-request-form input {
+  padding: 6px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+#cv-request-form button {
+  background: #183153;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+#cv-request-form button:hover {
+  background: #0077b5;
+}
