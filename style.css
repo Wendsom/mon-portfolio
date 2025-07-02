@@ -159,8 +159,9 @@ footer {
 }
 
 #skills ul li {
-  font-weight: bold;
-  color: #111; /* noir profond */
+  font-size: 1.18em;      /* Agrandit les points de compétences */
+  font-weight: bold;      /* Les rend bien visibles */
+  margin-bottom: 8px;     /* Espace entre les points */
 }
 
 #contact {
@@ -328,6 +329,12 @@ body.light-theme #skills ul li {
   color: #183153; /* Bleu foncé */
 }
 
+body.light-theme #skills h3,
+body.light-theme #skills strong {
+  color: #183153 !important;   /* Bleu foncé */
+  font-weight: bold !important;/* Gras */
+}
+
 .project-image {
   max-width: 900px;    /* Largeur maximale de l'image */
   width: 1000%;         /* L'image s'adapte à la largeur du conteneur */
@@ -434,4 +441,49 @@ img, .project-image, .profile-pic {
 body.light-theme section,
 body.light-theme section * {
   color: #111 !important; /* Texte noir profond pour tout le contenu intérieur des sections en mode light */
+}
+
+body.light-theme .background-overlay::before {
+  color: #888; /* Gris moyen pour bonne visibilité en mode light */
+}
+
+/* Rétablit la couleur officielle des logos de contact en mode light */
+body.light-theme #contact .contact-mail i {
+  color: #d44638 !important; /* Gmail rouge */
+}
+body.light-theme #contact .contact-whatsapp i {
+  color: #25d366 !important; /* WhatsApp vert */
+}
+body.light-theme #contact .contact-linkedin i {
+  color: #0077b5 !important; /* LinkedIn bleu */
+}
+body.light-theme #contact .contact-github i {
+  color: #181717 !important; /* GitHub noir */
+}
+
+body.light-theme #skills {
+  background-image: url('images/plan.jpg');        /* Image de fond pour la section compétences */
+  background-size: cover;                          /* L’image couvre toute la section */
+  background-repeat: no-repeat;                    /* Pas de répétition */
+  background-position: center center;              /* Centrée */
+  position: relative;                              /* Nécessaire pour l’arrière-plan */
+  z-index: 1;
+}
+
+.important-about {
+  font-weight: bold;        /* Met le texte en gras */
+  font-size: 1.25em;        /* Agrandit la police */
+  line-height: 1.5;         /* Améliore la lisibilité */
+}
+
+.engagements-list li {
+  font-weight: bold;     /* Met en gras */
+  font-size: 1.18em;     /* Agrandit la police */
+  margin-bottom: 8px;    /* Espace entre les points */
+}
+
+.important-section-title {
+  font-weight: bold;
+  font-size: 1.25em;
+  line-height: 1.5;
 }

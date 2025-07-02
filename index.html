@@ -35,7 +35,9 @@
 
   <section id="about" class="bg-blue">
     <h2><em>À propos de moi</em></h2>
-    <p>Passionné par les statistiques, la programmation et les politiques publiques, je développe des projets en Python, R, Stata et SQL autour des données économiques, sociales et financières.</p>
+    <p class="important-about">
+  Passionné par les statistiques, la programmation et la politique monétaire, je développe des projets en Python, R, Stata et SQL autour des données économiques, sociales et financières.
+</p>
   </section>
 
   <section id="skills" class="bg-light">
@@ -104,7 +106,7 @@
 
   <section id="engagements" class="bg-blue">
     <h2><em>Engagements & responsabilités</em></h2>
-    <ul>
+    <ul class="engagements-list">
       <li>Enseignant Python - Club informatique de l’ISSP</li>
       <li>Enseignant bénévole de mathématiques – JEC</li>
       <li>Modérateur – Webinaire actuariel (ISSP)</li>
@@ -113,7 +115,7 @@
   </section>
 
   <section id="cv" class="bg-light">
-    <h2><em>Mon CV</em></h2>
+    <h2 class="important-section-title"><em>Besoin de mon CV, remplissez les champs ci dessous et validez</em></h2>
     <!-- Formulaire pour demander le CV par mail -->
     <form action="https://formspree.io/f/mjkrzkyv" method="POST" id="cv-request-form">
       <!-- Champ pour le prénom -->
@@ -129,7 +131,7 @@
       <label for="email">Email :</label>
       <input type="email" id="email" name="Email" required>
       <!-- Bouton d'envoi -->
-      <button type="submit">Recevoir le CV par mail</button>
+      <button type="submit">Cliquez pour recevoir mon CV par mail</button>
     </form>
     <!-- Message de confirmation -->
     <div id="cv-form-message"></div>
@@ -172,7 +174,7 @@
   const toggleBtn = document.getElementById('theme-toggle');
   // Fonction pour changer le thème
   function toggleTheme() {
-    // Ajoute ou enlève la classe 'light-theme' sur le body
+    // Ajoute ou enlève la classe 'light-theme' on the body
     document.body.classList.toggle('light-theme');
     // Change l’icône du bouton selon le thème
     if(document.body.classList.contains('light-theme')) {
