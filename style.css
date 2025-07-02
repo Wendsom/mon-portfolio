@@ -42,11 +42,13 @@ header {
 }
 
 .profile-pic {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
+  width: 120px;           /* Largeur fixe */
+  height: 120px;          /* Hauteur fixe */
+  border-radius: 50%;     /* Cercle parfait */
   border: 3px solid #f0f0f0;
-  object-fit: cover;
+  object-fit: cover;      /* Remplit le cercle sans déformation */
+  aspect-ratio: 1/1;      /* Force le ratio carré même sur mobile */
+  display: block;
 }
 
 h1 {
@@ -181,18 +183,19 @@ footer {
 }
 
 #contact .contact-icon {
-  display: flex;                        /* Centre l’icône dans le bouton */
+  width: 64px;            /* Largeur fixe */
+  height: 64px;           /* Hauteur fixe */
+  border-radius: 50%;     /* Cercle parfait */
+  display: flex;
   align-items: center;
   justify-content: center;
-  width: 64px;                          /* Taille du bouton */
-  height: 64px;
-  border-radius: 50%;                   /* Bouton rond */
-  background: #fff;                     /* Fond blanc pour contraste */
-  font-size: 2.2em;                     /* Taille de l’icône */
+  background: #fff;
+  font-size: 2.2em;
   transition: box-shadow 0.2s, transform 0.2s;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* Ombre légère */
-  text-decoration: none;                /* Pas de soulignement */
-  border: 2px solid transparent;        /* Bordure invisible par défaut */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  text-decoration: none;
+  border: 2px solid transparent;
+  aspect-ratio: 1/1;      /* Force le ratio carré même sur mobile */
 }
 
 #contact .contact-icon:hover {
@@ -232,6 +235,9 @@ footer {
   margin: 0;
   padding: 12px 0;
   list-style: none;
+  flex-wrap: wrap;           /* Permet aux éléments de passer à la ligne si besoin */
+  overflow-x: auto;          /* Ajoute une barre de défilement horizontale si nécessaire */
+  white-space: nowrap;       /* Empêche le retour à la ligne à l'intérieur d'un lien */
 }
 
 .navbar a {
@@ -265,8 +271,8 @@ body.light-theme {
 }
 
 body.light-theme .bg-blue {
-  background: #e3eafc;           /* Bleu très clair pour les sections */
-  color: #222;                   /* Texte foncé */
+  background: #7c3aed;           /* Violet harmonieux */
+  color: #fff;
 }
 
 body.light-theme .bg-light {
@@ -317,6 +323,11 @@ body.light-theme footer {
   color: #222;
 }
 
+/* Points de compétence bleus en mode light */
+body.light-theme #skills ul li {
+  color: #183153; /* Bleu foncé */
+}
+
 .project-image {
   max-width: 900px;    /* Largeur maximale de l'image */
   width: 1000%;         /* L'image s'adapte à la largeur du conteneur */
@@ -356,4 +367,65 @@ body.light-theme footer {
 }
 #cv-request-form button:hover {
   background: #0077b5;
+}
+
+/* Règles pour rendre le site responsive */
+
+/* Les sections et conteneurs s'adaptent à la largeur de l'écran */
+section, .profile-container {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Les images ne dépassent jamais la largeur de l'écran */
+img, .project-image, .profile-pic {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Navigation responsive */
+.navbar ul {
+  flex-wrap: wrap; /* Permet aux liens de passer à la ligne si besoin */
+  gap: 18px;
+  padding: 10px 4vw;
+}
+
+/* Formulaire responsive */
+#cv-request-form {
+  max-width: 98vw;
+}
+
+/* Adaptation pour petits écrans */
+@media (max-width: 700px) {
+  section {
+    padding: 18px 4vw;
+  }
+  .profile-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .navbar ul {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 0;
+  }
+  .cert-images img, .project-image {
+    width: 98vw;
+    max-width: 360px;
+  }
+  .navbar ul {
+    gap: 12px;
+    padding: 10px 2vw;
+    font-size: 0.98em;
+  }
+  .navbar a {
+    font-size: 0.98em;
+    padding: 6px 2vw;
+  }
+}
+
+body.light-theme section,
+body.light-theme section * {
+  color: #111 !important; /* Texte noir profond pour tout le contenu intérieur des sections en mode light */
 }
