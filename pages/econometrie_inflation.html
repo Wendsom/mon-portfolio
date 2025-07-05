@@ -2,15 +2,64 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Projet : Économétrie Inflation</title>
+  <title data-fr="Projet : Économétrie Inflation" data-en="Project: Inflation Econometrics">Projet : Économétrie Inflation</title>
   <link rel="stylesheet" href="../style.css">
 </head>
 <body>
+  <!-- Sélecteur de langue -->
+  <div class="language-selector" style="position: fixed; top: 20px; right: 20px; z-index: 1000;">
+    <button class="lang-btn active" data-lang="fr">🇫🇷 FR</button>
+    <button class="lang-btn" data-lang="en">🇺🇸 EN</button>
+  </div>
+
+  <!-- Bouton de retour au portfolio -->
+  <a href="../index.html" class="back-to-portfolio" data-fr="&larr; Retour au portfolio" data-en="&larr; Back to portfolio">&larr; Retour au portfolio</a>
+
   <section>
-    <h2>Économétrie inflation (EViews)</h2>
+    <h2 data-fr="Économétrie inflation (EViews)" data-en="Inflation econometrics (EViews)">Économétrie inflation (EViews)</h2>
     <img src="../images/projects/econometrie_inflation.png" alt="Économétrie Inflation" class="project-image">
-    <p>Modélisation des facteurs explicatifs de l'inflation avec EViews.</p>
-    <p><a href="../index.html">&larr; Retour au portfolio</a></p>
+    <p data-fr="Modélisation économétrique de l'inflation." data-en="Econometric modeling of inflation.">Modélisation économétrique de l'inflation.</p>
   </section>
+
+  <!-- Script pour la traduction -->
+  <script>
+    // Fonction pour changer la langue
+    function changeLanguage(lang) {
+      // Mettre à jour les boutons de langue
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
+      
+      // Traduire tous les éléments avec des attributs data-fr et data-en
+      document.querySelectorAll('[data-fr][data-en]').forEach(element => {
+        if (lang === 'en') {
+          element.textContent = element.getAttribute('data-en');
+        } else {
+          element.textContent = element.getAttribute('data-fr');
+        }
+      });
+      
+      // Sauvegarder la préférence de langue
+      localStorage.setItem('preferred-language', lang);
+    }
+    
+    // Ajouter les événements aux boutons de langue
+    document.addEventListener('DOMContentLoaded', function() {
+      const langButtons = document.querySelectorAll('.lang-btn');
+      langButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+          const lang = this.getAttribute('data-lang');
+          changeLanguage(lang);
+        });
+      });
+      
+      // Restaurer la langue préférée
+      const savedLang = localStorage.getItem('preferred-language');
+      if (savedLang && savedLang !== 'fr') {
+        changeLanguage(savedLang);
+      }
+    });
+  </script>
 </body>
 </html>

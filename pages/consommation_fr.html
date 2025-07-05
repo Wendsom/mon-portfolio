@@ -2,15 +2,64 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Projet : Consommation France</title>
+  <title data-fr="Projet : Consommation France" data-en="Project: France Consumption">Projet : Consommation France</title>
   <link rel="stylesheet" href="../style.css">
 </head>
 <body>
+  <!-- Sélecteur de langue -->
+  <div class="language-selector" style="position: fixed; top: 20px; right: 20px; z-index: 1000;">
+    <button class="lang-btn active" data-lang="fr">🇫🇷 FR</button>
+    <button class="lang-btn" data-lang="en">🇺🇸 EN</button>
+  </div>
+
+  <!-- Bouton de retour au portfolio -->
+  <a href="../index.html" class="back-to-portfolio" data-fr="&larr; Retour au portfolio" data-en="&larr; Back to portfolio">&larr; Retour au portfolio</a>
+
   <section>
-    <h2>Étude consommation France (Excel)</h2>
+    <h2 data-fr="Consommation des ménages français" data-en="French household consumption">Consommation des ménages français</h2>
     <img src="../images/projects/consommation_fr.png" alt="Consommation France" class="project-image">
-    <p>Analyse de l'évolution de la consommation des ménages français entre 1990 et 2023.</p>
-    <p><a href="../index.html">&larr; Retour au portfolio</a></p>
+    <p data-fr="Analyse de la consommation des ménages." data-en="Analysis of household consumption.">Analyse de la consommation des ménages.</p>
   </section>
+
+  <!-- Script pour la traduction -->
+  <script>
+    // Fonction pour changer la langue
+    function changeLanguage(lang) {
+      // Mettre à jour les boutons de langue
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
+      
+      // Traduire tous les éléments avec des attributs data-fr et data-en
+      document.querySelectorAll('[data-fr][data-en]').forEach(element => {
+        if (lang === 'en') {
+          element.textContent = element.getAttribute('data-en');
+        } else {
+          element.textContent = element.getAttribute('data-fr');
+        }
+      });
+      
+      // Sauvegarder la préférence de langue
+      localStorage.setItem('preferred-language', lang);
+    }
+    
+    // Ajouter les événements aux boutons de langue
+    document.addEventListener('DOMContentLoaded', function() {
+      const langButtons = document.querySelectorAll('.lang-btn');
+      langButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+          const lang = this.getAttribute('data-lang');
+          changeLanguage(lang);
+        });
+      });
+      
+      // Restaurer la langue préférée
+      const savedLang = localStorage.getItem('preferred-language');
+      if (savedLang && savedLang !== 'fr') {
+        changeLanguage(savedLang);
+      }
+    });
+  </script>
 </body>
 </html>

@@ -2,15 +2,64 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Projet : Indice TIC</title>
+  <title data-fr="Projet : TIC Afrique" data-en="Project: ICT Africa">Projet : TIC Afrique</title>
   <link rel="stylesheet" href="../style.css">
 </head>
 <body>
+  <!-- Sélecteur de langue -->
+  <div class="language-selector" style="position: fixed; top: 20px; right: 20px; z-index: 1000;">
+    <button class="lang-btn active" data-lang="fr">🇫🇷 FR</button>
+    <button class="lang-btn" data-lang="en">🇺🇸 EN</button>
+  </div>
+
+  <!-- Bouton de retour au portfolio -->
+  <a href="../index.html" class="back-to-portfolio" data-fr="&larr; Retour au portfolio" data-en="&larr; Back to portfolio">&larr; Retour au portfolio</a>
+
   <section>
-    <h2>Indice TIC en Afrique</h2>
-    <img src="../images/projects/tic_afrique.png" alt="Indice TIC" class="project-image">
-    <p>Construction d'un indicateur composite sur l'accès, l'utilisation et les compétences numériques.</p>
-    <p><a href="../index.html">&larr; Retour au portfolio</a></p>
+    <h2 data-fr="TIC en Afrique" data-en="ICT in Africa">TIC en Afrique</h2>
+    <img src="../images/projects/tic_afrique.png" alt="TIC Afrique" class="project-image">
+    <p data-fr="Étude sur les technologies de l'information en Afrique." data-en="Study on information technologies in Africa.">Étude sur les technologies de l'information en Afrique.</p>
   </section>
+
+  <!-- Script pour la traduction -->
+  <script>
+    // Fonction pour changer la langue
+    function changeLanguage(lang) {
+      // Mettre à jour les boutons de langue
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
+      
+      // Traduire tous les éléments avec des attributs data-fr et data-en
+      document.querySelectorAll('[data-fr][data-en]').forEach(element => {
+        if (lang === 'en') {
+          element.textContent = element.getAttribute('data-en');
+        } else {
+          element.textContent = element.getAttribute('data-fr');
+        }
+      });
+      
+      // Sauvegarder la préférence de langue
+      localStorage.setItem('preferred-language', lang);
+    }
+    
+    // Ajouter les événements aux boutons de langue
+    document.addEventListener('DOMContentLoaded', function() {
+      const langButtons = document.querySelectorAll('.lang-btn');
+      langButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+          const lang = this.getAttribute('data-lang');
+          changeLanguage(lang);
+        });
+      });
+      
+      // Restaurer la langue préférée
+      const savedLang = localStorage.getItem('preferred-language');
+      if (savedLang && savedLang !== 'fr') {
+        changeLanguage(savedLang);
+      }
+    });
+  </script>
 </body>
 </html>
