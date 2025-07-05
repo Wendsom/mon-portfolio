@@ -4,3 +4,7 @@ Allow: /
 
 # Indique l'emplacement du sitemap
 Sitemap: https://wendsom.github.io/mon-portfolio/sitemap.xml
+
+# Informations sur le site
+# Portfolio de Wendsom Armand Judicaël COMPAORÉ
+# Data Scientist, Économiste et Spécialiste en Politique Monétaire

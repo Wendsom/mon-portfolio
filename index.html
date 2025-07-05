@@ -3,9 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wendsom Armand Judicaël COMPAORÉ - Portfolio</title>
+  
+  <!-- Titre personnalisé pour l'onglet du navigateur -->
+  <title>Wendsom Armand Judicaël COMPAORÉ | Élève Ingénieur Statisticien Économiste | Portfolio</title>
+  
+  <!-- Métadonnées pour le SEO et les réseaux sociaux -->
+  <meta name="description" content="Portfolio de Wendsom Armand Judicaël COMPAORÉ - Élève Ingénieur Statisticien Économiste et Spécialiste en Politique Monétaire. Découvrez mes projets en statistique, économétrie et analyse de données.">
+  <meta name="keywords" content="Wendsom Armand Judicaël COMPAORÉ, Élève Ingénieur, Statisticien, Économiste, Statistique, Économétrie, Python, R, Politique Monétaire, Portfolio">
+  <meta name="author" content="Wendsom Armand Judicaël COMPAORÉ">
+  
+  <!-- Open Graph pour Facebook et LinkedIn -->
+  <meta property="og:title" content="Wendsom Armand Judicaël COMPAORÉ | Élève Ingénieur Statisticien Économiste">
+  <meta property="og:description" content="Portfolio professionnel - Élève ingénieur en statistique, économétrie et politique monétaire">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wendsom.github.io/mon-portfolio/">
+  <meta property="og:image" content="https://wendsom.github.io/mon-portfolio/images/wendsom.jpg">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Wendsom Armand Judicaël COMPAORÉ | Élève Ingénieur Statisticien Économiste">
+  <meta name="twitter:description" content="Portfolio professionnel - Élève ingénieur en statistique, économétrie et politique monétaire">
+  <meta name="twitter:image" content="https://wendsom.github.io/mon-portfolio/images/wendsom.jpg">
+  
+  <!-- Favicon (icône de l'onglet) -->
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  
+  <!-- Manifeste pour PWA -->
+  <link rel="manifest" href="manifest.json">
+  
+  <!-- Feuilles de style -->
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XSV8LWCSYK"></script>
 <script>
@@ -44,8 +76,11 @@
   <section id="about" class="bg-blue">
     <h2><em>À propos de moi</em></h2>
     <p class="important-about">
-  Passionné par les statistiques, la programmation et la politique monétaire, je développe des projets en Python, R, Stata et SQL autour des données économiques, sociales et financières.
-</p>
+      Je suis titulaire d'une licence en mathématiques et informatique, spécialité mathématiques appliquées aux sciences, obtenue à l'Université Ouaga 3S de Ouagadougou. Cette formation m'a permis d'acquérir de solides bases théoriques en analyse mathématique, algèbre, ainsi qu'une spécialisation marquée en probabilités et statistique.
+    </p>
+    <p class="important-about">
+      Poursuivant mon parcours académique, je suis actuellement étudiant en deuxième année du cycle d'ingénierie statistique et économique à l'Institut Supérieur des Sciences de la Population (ISSP) de l'Université Joseph Ki-Zerbo. Cette formation pluridisciplinaire m'a permis de développer des compétences approfondies en statistique appliquée, économétrie, programmation statistique et analyse des politiques publiques. C'est également dans ce cadre que j'ai découvert et approfondi mon intérêt pour la politique monétaire, thématique à laquelle je m'intéresse particulièrement.
+    </p>
   </section>
 
   <section id="skills" class="bg-light">
@@ -126,18 +161,18 @@
     <h2 class="important-section-title"><em>Besoin de mon CV, remplissez les champs ci dessous et validez</em></h2>
     <!-- Formulaire pour demander le CV par mail -->
     <form action="https://formspree.io/f/mjkrzkyv" method="POST" id="cv-request-form">
-      <!-- Champ pour le prénom -->
-      <label for="prenom">Prénom :</label>
-      <input type="text" id="prenom" name="Prénom" required>
       <!-- Champ pour le nom -->
       <label for="nom">Nom :</label>
       <input type="text" id="nom" name="Nom" required>
-      <!-- Champ pour WhatsApp -->
-      <label for="whatsapp">WhatsApp :</label>
-      <input type="text" id="whatsapp" name="WhatsApp" required>
+      <!-- Champ pour le prénom -->
+      <label for="prenom">Prénom :</label>
+      <input type="text" id="prenom" name="Prénom" required>
       <!-- Champ pour l'email -->
       <label for="email">Email :</label>
       <input type="email" id="email" name="Email" required>
+      <!-- Champ pour WhatsApp -->
+      <label for="whatsapp">WhatsApp :</label>
+      <input type="text" id="whatsapp" name="WhatsApp" required>
       <!-- Bouton d'envoi -->
       <button type="submit">Cliquez pour recevoir mon CV par mail</button>
     </form>
@@ -171,6 +206,11 @@
   </section>
   <!-- Fin de la section Contact -->
 
+  <!-- Formule mathématique de la variance -->
+  <div class="variance-formula">
+    <span>Var(X) = E[(X - μ)²] = Σ(xᵢ - μ)²P(xᵢ)</span>
+  </div>
+
   <!-- Ajoute ce bouton pour changer de thème -->
 <button id="theme-toggle" aria-label="Changer le thème" style="position:fixed;top:18px;right:24px;z-index:1100;">
   🌙
@@ -198,5 +238,37 @@
   <footer>
     <p>&copy; 2025 Judicaël Compaoré. Tous droits réservés.</p>
   </footer>
+
+  <!-- Bouton de retour en haut de page -->
+  <button class="scroll-to-top" id="scrollToTop" aria-label="Retour en haut de page">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Script pour le bouton de retour en haut -->
+  <script>
+    // Sélectionne le bouton
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+    
+    // Fonction pour afficher/masquer le bouton selon la position de scroll
+    function toggleScrollButton() {
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('visible');
+      } else {
+        scrollToTopBtn.classList.remove('visible');
+      }
+    }
+    
+    // Fonction pour remonter en haut de page
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+    
+    // Écouteurs d'événements
+    window.addEventListener('scroll', toggleScrollButton);
+    scrollToTopBtn.addEventListener('click', scrollToTop);
+  </script>
 </body>
 </html>
