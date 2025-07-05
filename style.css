@@ -459,6 +459,58 @@ footer {
   width: 100%;
 }
 
+/* Sélecteur de langue */
+.language-selector {
+  display: flex;
+  gap: 10px;
+  margin-left: 20px;
+}
+
+.lang-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: #f0f0f0;
+  padding: 8px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9em;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.lang-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.lang-btn.active {
+  background: rgba(255, 215, 0, 0.3);
+  border-color: #ffd700;
+  color: #ffd700;
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
+}
+
+/* Mode light pour le sélecteur de langue */
+body.light-theme .lang-btn {
+  background: rgba(49, 130, 206, 0.1);
+  border: 2px solid rgba(49, 130, 206, 0.3);
+  color: #1a365d;
+}
+
+body.light-theme .lang-btn:hover {
+  background: rgba(49, 130, 206, 0.2);
+  border-color: rgba(49, 130, 206, 0.5);
+}
+
+body.light-theme .lang-btn.active {
+  background: rgba(49, 130, 206, 0.3);
+  border-color: #3182ce;
+  color: #3182ce;
+  box-shadow: 0 4px 12px rgba(49, 130, 206, 0.2);
+}
+
 #cv a {
   color: #fff;                /* Met le texte du lien en blanc */
   font-weight: bold;          /* Met le texte en gras */
@@ -1060,4 +1112,92 @@ body.light-theme .cert-images img {
 body.light-theme .cert-images img:hover {
   border-color: #d97706;
   box-shadow: 0 10px 30px rgba(217, 119, 6, 0.3);
+}
+
+/* Styles pour les pages de projets - Police plus grande */
+body section h2 {
+  font-size: 2.5em !important;
+  margin-bottom: 30px;
+  color: #ffd700;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+body section p {
+  font-size: 1.4em !important;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #f0f0f0;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+body section a {
+  font-size: 1.3em !important;
+  color: #ffd700;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+body section a:hover {
+  color: #ffed4e;
+  text-shadow: 0 2px 4px rgba(255, 215, 0, 0.5);
+}
+
+/* Mode light pour les pages de projets */
+body.light-theme section h2 {
+  color: #1a365d !important;
+  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+body.light-theme section p {
+  color: #2d3748 !important;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
+}
+
+body.light-theme section a {
+  color: #3182ce !important;
+}
+
+body.light-theme section a:hover {
+  color: #2c5aa0 !important;
+  text-shadow: 0 2px 4px rgba(49, 130, 206, 0.3);
+}
+
+/* Bouton de retour au portfolio - Position en haut à gauche */
+.back-to-portfolio {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  background: rgba(255, 215, 0, 0.9);
+  color: #1a365d;
+  padding: 12px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1em;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+  transition: all 0.3s ease;
+  border: 2px solid rgba(255, 215, 0, 0.5);
+}
+
+.back-to-portfolio:hover {
+  background: rgba(255, 215, 0, 1);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+  color: #1a365d;
+}
+
+/* Mode light pour le bouton de retour */
+body.light-theme .back-to-portfolio {
+  background: rgba(49, 130, 206, 0.9);
+  color: #ffffff;
+  border: 2px solid rgba(49, 130, 206, 0.5);
+  box-shadow: 0 4px 15px rgba(49, 130, 206, 0.3);
+}
+
+body.light-theme .back-to-portfolio:hover {
+  background: rgba(49, 130, 206, 1);
+  box-shadow: 0 6px 20px rgba(49, 130, 206, 0.4);
+  color: #ffffff;
 }
