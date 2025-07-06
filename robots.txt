@@ -1,9 +1,14 @@
-# Autorise tous les robots à explorer le site
+# Fichier robots.txt pour le portfolio de Wendsom Armand Judicaël COMPAORÉ
+# Permet aux moteurs de recherche d'indexer tout le site
+
 User-agent: *
 Allow: /
 
-# Indique l'emplacement du sitemap
+# Sitemap pour aider l'indexation
 Sitemap: https://wendsom.github.io/mon-portfolio/sitemap.xml
+
+# Temps d'attente entre les requêtes (en secondes)
+Crawl-delay: 1
 
 # Informations sur le site
 # Portfolio de Wendsom Armand Judicaël COMPAORÉ
