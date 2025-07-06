@@ -90,23 +90,25 @@
 </head>
 <body>
   <!-- À placer juste après <body> et avant <div class="background-overlay"></div> -->
-  <!-- Navigation Fixe -->
-  <nav class="navbar">
-  <ul>
-    <li><a href="#about" data-fr="À propos" data-en="About">À propos</a></li>
-    <li><a href="#skills" data-fr="Compétences" data-en="Skills">Compétences</a></li>
-    <li><a href="#projects" data-fr="Projets" data-en="Projects">Projets</a></li>
-    <li><a href="#certifications" data-fr="Certifications" data-en="Certifications">Certifications</a></li>
-    <li><a href="#engagements" data-fr="Engagements" data-en="Commitments">Engagements</a></li>
-    <li><a href="#cv" data-fr="CV" data-en="CV">CV</a></li>
-    <li><a href="#contact" data-fr="Contacts" data-en="Contacts">Contacts</a></li>
-  </ul>
-  <!-- Sélecteur de langue -->
-  <div class="language-selector">
-    <button class="lang-btn active" data-lang="fr">🇫🇷 FR</button>
-    <button class="lang-btn" data-lang="en">🇺🇸 EN</button>
-  </div>
-</nav>
+  <!-- Navigation Fixe Responsive -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-container">
+      <ul>
+        <li><a href="#about" data-fr="À propos" data-en="About">À propos</a></li>
+        <li><a href="#skills" data-fr="Compétences" data-en="Skills">Compétences</a></li>
+        <li><a href="#projects" data-fr="Projets" data-en="Projects">Projets</a></li>
+        <li><a href="#certifications" data-fr="Certifications" data-en="Certifications">Certifications</a></li>
+        <li><a href="#engagements" data-fr="Engagements" data-en="Commitments">Engagements</a></li>
+        <li><a href="#cv" data-fr="CV" data-en="CV">CV</a></li>
+        <li><a href="#contact" data-fr="Contacts" data-en="Contacts">Contacts</a></li>
+      </ul>
+      <!-- Sélecteur de langue -->
+      <div class="language-selector">
+        <button class="lang-btn active" data-lang="fr">🇫🇷 FR</button>
+        <button class="lang-btn" data-lang="en">🇺🇸 EN</button>
+      </div>
+    </div>
+  </nav>
   <div class="background-overlay"></div>
 
   <!-- En-tête principal avec informations personnelles -->
@@ -292,7 +294,7 @@
 </script>
 
   <footer>
-    <p data-fr="&copy; 2025 Judicaël Compaoré. Tous droits réservés." data-en="&copy; 2025 Judicaël Compaoré. All rights reserved.">&copy; 2025 Judicaël Compaoré. Tous droits réservés.</p>
+    <p data-fr="&copy; 2025 Judicaël COMPAORÉ. Tous droits réservés." data-en="&copy; 2025 Judicaël COMPAORÉ. All rights reserved.">&copy; 2025 Judicaël COMPAORÉ. Tous droits réservés.</p>
   </footer>
 
   <!-- Script pour la traduction -->
@@ -340,6 +342,42 @@
   <button class="scroll-to-top" id="scrollToTop" aria-label="Retour en haut de page">
     <i class="fas fa-arrow-up"></i>
   </button>
+
+  <!-- Script pour la navigation intelligente -->
+  <script>
+    // Variables pour la navigation intelligente
+    let lastScrollTop = 0;
+    const navbar = document.getElementById('navbar');
+    const scrollThreshold = 100; // Seuil de défilement pour déclencher l'animation
+    
+    // Fonction pour gérer l'apparition/disparition de la navbar
+    function handleNavbarScroll() {
+      const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      // Si on défile vers le bas et qu'on a dépassé le seuil
+      if (currentScrollTop > lastScrollTop && currentScrollTop > scrollThreshold) {
+        navbar.classList.add('nav-hidden');
+        navbar.classList.remove('nav-visible');
+      }
+      // Si on défile vers le haut
+      else if (currentScrollTop < lastScrollTop) {
+        navbar.classList.remove('nav-hidden');
+        navbar.classList.add('nav-visible');
+      }
+      
+      lastScrollTop = currentScrollTop;
+    }
+    
+    // Écouteur d'événement pour le défilement
+    window.addEventListener('scroll', handleNavbarScroll, { passive: true });
+    
+    // Réinitialiser la navbar quand on remonte en haut
+    window.addEventListener('scroll', function() {
+      if (window.pageYOffset === 0) {
+        navbar.classList.remove('nav-hidden', 'nav-visible');
+      }
+    });
+  </script>
 
   <!-- Script pour le bouton de retour en haut -->
   <script>
