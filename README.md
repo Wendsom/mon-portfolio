@@ -125,12 +125,12 @@ Portfolio professionnel d'un élève ingénieur statisticien économiste, spéci
 - Contribuer à la recherche en politique monétaire
 - Appliquer les méthodes statistiques et économétriques
 - Participer à des projets d'inclusion financière
-
-## 📞 Contact
+          
+## 📞 Contacts
 - **Email :** wendjudicael@gmail.com
 - **WhatsApp :** Disponible via le formulaire de contact
-- **LinkedIn :** [Profil LinkedIn]
-- **GitHub :** [Profil GitHub]
+- **LinkedIn :** [Profil LinkedIn](http://www.linkedin.com/in/wendsom-armand-judicael-compaore)
+- **GitHub :** [Profil GitHub](https://github.com/Wendsom)
 
 ---
 
