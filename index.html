@@ -279,7 +279,7 @@
   <footer role="contentinfo">
 
   <!-- Ajoute ce bouton pour changer de thème -->
-<button id="theme-toggle" aria-label="Changer le thème" style="position:fixed;top:18px;right:24px;z-index:1100;">
+<button id="theme-toggle" aria-label="Changer le thème">
   🌙
 </button>
 
@@ -413,6 +413,34 @@
     // Écouteurs d'événements
     window.addEventListener('scroll', toggleScrollButton);
     scrollToTopBtn.addEventListener('click', scrollToTop);
+  </script>
+
+  <!-- Script pour l'animation de défilement des sections -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const sections = document.querySelectorAll('section');
+
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('section-visible');
+            entry.target.classList.remove('section-hidden');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      sections.forEach(section => {
+        section.classList.add('section-hidden');
+        observer.observe(section);
+      });
+    });
   </script>
 </body>
 </html>

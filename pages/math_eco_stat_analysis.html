@@ -63,15 +63,20 @@
       white-space: nowrap;
       position: relative;
       height: 45px; /* Hauteur fixe pour contenir le texte */
+      display: flex;
+      align-items: center;
+      width: calc(100% + 40px);
+      margin-left: -20px;
+      margin-right: -20px;
+      margin-bottom: 30px;
     }
 
     .scrolling-banner p {
-      position: absolute;
       margin: 0;
       font-weight: bold;
       font-size: 1.1em;
-      line-height: 1.3; /* Centrer verticalement */
       animation: scroll-right 25s linear infinite;
+      color: #1a365d; /* Rétablir la couleur bleu foncé */
     }
 
     /* Animation de défilement de gauche à droite */
@@ -87,7 +92,7 @@
     /* Hero Section pour MathEcoStatAnalysis */
     .hero-section {
       background: linear-gradient(135deg, #1b263b 0%, #2c3e50 50%, #34495e 100%);
-      padding: 100px 20px 80px;
+      padding: 0 20px 80px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -248,7 +253,7 @@
     .cabinet-content {
       display: flex;
       flex-direction: column;
-      gap: 30px;
+      gap: 40px; /* Espace de 1cm ajouté */
       align-items: center;
     }
     
@@ -271,9 +276,8 @@
       background: transparent;         /* Fond transparent */
       border: none;                    /* Pas de bordure */
       border-radius: 0;                /* Pas de coins arrondis */
-      padding: 20px 0;                 /* Padding vertical seulement */
-      margin-bottom: 20px;             /* Espace en bas réduit */
-      text-align: justify;             /* Texte justifié */
+        padding: 20px 0 0 0;                 /* Padding vertical seulement */
+        margin-bottom: 0;             /* Espace en bas réduit */      text-align: justify;             /* Texte justifié */
       max-width: 800px;                /* Largeur maximale */
     }
     
@@ -292,7 +296,11 @@
       line-height: 1.7;
       margin-bottom: 20px;
       color: #000000;                  /* Texte en noir */
-      text-align: justify;             /* Justification du texte */
+      text-align: left;             /* Alignement à gauche */
+    }
+
+    .cabinet-description p:last-child {
+      margin-bottom: 0;
     }
     
     /* ========================================
@@ -301,17 +309,15 @@
     .values-section {
       background: transparent;         /* Fond transparent */
       border: none;                    /* Pas de bordure */
-      border-radius: 0;                /* Pas de coins arrondis */
-      padding: 20px 0;                 /* Padding vertical seulement */
-      margin-top: 20px;                /* Espace en haut */
-      max-width: 800px;                /* Largeur maximale */
+            border-radius: 0;                /* Pas de coins arrondis */
+            padding: 0;                 /* Padding vertical seulement */        margin-top: 0;                /* Espace en haut */      max-width: 800px;                /* Largeur maximale */
       overflow: hidden;                /* Cache le défilement */
     }
     
     .values-section h3 {
       color: #3182ce !important;       /* Titre "Nos Valeurs" en bleu */
       font-size: 2.2em;
-      margin: 20px auto;               /* Centrage vertical et horizontal */
+      margin: 0 auto 20px auto;               /* Centrage vertical et horizontal */
       text-align: center;              /* Centrage du titre */
       width: fit-content;              /* Largeur selon le contenu */
     }
@@ -564,7 +570,7 @@
     
     .inscription-form {
       background: linear-gradient(135deg, #C4B3D6 0%, #FFFFFF 100%);
-      padding: 40px;
+      padding: 40px 0;
       border-radius: 15px;
       box-shadow: 0 8px 25px rgba(0,0,0,0.1);
       max-width: 800px;
@@ -576,6 +582,7 @@
     .form-group {
       margin-bottom: 25px;
       text-align: left;
+      padding: 0 40px;
     }
     
     .form-group label {
@@ -687,7 +694,7 @@
 
     .form-step {
         width: 12.5%; /* 100% / 8 étapes */
-        padding: 0 15px;
+        padding: 0;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
@@ -699,6 +706,7 @@
         display: flex;
         justify-content: space-between;
         margin-top: 20px;
+        padding: 0 40px;
     }
 
     .navigation-button {
@@ -969,8 +977,22 @@
         max-width: 300px;
       }
       
+      /*
+       * Correction pour le formulaire sur tablette.
+       * Le padding horizontal est supprimé du conteneur principal
+       * et appliqué aux éléments internes pour éviter le débordement
+       * du champ suivant lors de la transition.
+      */
       .inscription-form {
-        padding: 30px 20px;
+        padding: 30px 0;
+      }
+
+      .form-navigation {
+        padding: 0 20px;
+      }
+      
+      .form-group {
+        padding: 0 20px;
       }
       
       .testimonials-grid {
@@ -1017,7 +1039,42 @@
       .service-card {
         padding: 20px 15px;
       }
+
+      /* ========================================
+         CORRECTIONS RESPONSIVES POUR MOBILE
+         ======================================== */
+
+      /* --- Barre de navigation --- */
+      /* Empile les éléments de la barre de navigation pour éviter le chevauchement */
+      #navbar > div {
+        flex-direction: column; /* Affiche le logo/titre et les liens l'un sur l'autre */
+        gap: 12px; /* Ajoute un petit espace entre les deux blocs */
+      }
+
+      /* Ajuste la hauteur de l'espace réservé pour la navbar fixe */
+      
+      #navbar > div > div:last-child {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      /* --- Formulaire d'inscription --- */
+      /* Ajuste le padding pour les petits écrans pour corriger le débordement */
+      .inscription-form {
+        padding: 30px 0; /* Supprime le padding horizontal */
+      }
+      .form-navigation,
+      .form-group {
+        padding: 0 15px; /* Réduit le padding horizontal pour les champs et les boutons */
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+      }
     }
+
   </style>
 </head>
 
@@ -1043,16 +1100,15 @@
     </div>
   </nav>
   
-  <!-- Espace pour la navbar fixe -->
-  <div style="height: 80px;"></div>
+  <!-- Espace pour la navbar fixe (supprimé pour réduire l'espace) -->
   
-  <!-- Bandeau défilant -->
-  <div class="scrolling-banner">
-    <p data-fr="Nous sommes ouverts 24h/24 et 7j/7 pour répondre à tous vos besoins en analyse de données." data-en="We are open 24/7 to meet all your data analysis needs.">Nous sommes ouverts 24h/24 et 7j/7 pour répondre à tous vos besoins en analyse de données.</p>
-  </div>
   
   <!-- Hero Section -->
   <section class="hero-section">
+    <!-- Bandeau défilant -->
+    <div class="scrolling-banner">
+      <p data-fr="Nous sommes ouverts 24h/24 et 7j/7 pour répondre à tous vos besoins en analyse de données." data-en="We are open 24/7 to meet all your data analysis needs.">Nous sommes ouverts 24h/24 et 7j/7 pour répondre à tous vos besoins en analyse de données.</p>
+    </div>
     <div class="hero-content">
       <div class="hero-logo-container">
         <img src="../images/MathEcoStat.png" alt="Logo MathEcoStatAnalysis" class="hero-logo-image">
@@ -1718,7 +1774,5 @@
 
 <!-- Script de traduction externe -->
 <script src="../translator.js"></script>
-</body>
-</html>nslator.js"></script>
 </body>
 </html>
