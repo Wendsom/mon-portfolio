@@ -548,7 +548,7 @@
       color: #000000 !important;
       line-height: 1.6;
       margin-bottom: 40px;
-      text-align: justify;
+      text-align: center;
     }
     
     /* Contenu de l'inscription */
@@ -556,19 +556,21 @@
       background: transparent;
       border: none;
       border-radius: 10px;
-      padding: 30px;
+      padding: 0;
       margin: 0 auto 30px auto;
-      max-width: 1200px;           /* Même largeur que la section Services */
+      max-width: 800px; 
       box-shadow: none;
     }
     
     .inscription-form {
-      background: linear-gradient(135deg, #C4B3D6 0%, #FFFFFF 100%);  /* Dégradé violet plus prononcé */
+      background: linear-gradient(135deg, #C4B3D6 0%, #FFFFFF 100%);
       padding: 40px;
       border-radius: 15px;
       box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-      max-width: 800px;            /* Largeur agrandie */
+      max-width: 800px;
       margin: 0 auto;
+      position: relative;
+      overflow: hidden;
     }
     
     .form-group {
@@ -580,7 +582,7 @@
       display: block;
       margin-bottom: 8px;
       font-weight: bold;
-      color: #333;              /* Texte sombre pour lisibilité */
+      color: #333;
       font-size: 1.1em;
     }
     
@@ -589,21 +591,19 @@
     .form-group textarea {
       width: 100%;
       padding: 12px 15px;
-      border: 2px solid #e2e8f0;
+      border: 2px solid #ced4da;
       border-radius: 8px;
       font-size: 1em;
-      color: #000000;              /* Texte des inputs en noir */
-      background-color: #ffffff;   /* Fond blanc pour les inputs */
+      color: #212529;
+      background-color: #ffffff !important; /* Assure un fond blanc visible */
       transition: border-color 0.3s ease;
       box-sizing: border-box;
     }
-    
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: #3182ce;
-      box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+
+    .form-text.text-muted {
+        font-size: 0.85em;
+        color: #6c757d;
+        margin-top: 4px;
     }
     
     .submit-button {
@@ -617,7 +617,6 @@
       cursor: pointer;
       transition: all 0.3s ease;
       box-shadow: 0 4px 15px rgba(49, 130, 206, 0.3);
-      width: 100%;
     }
     
     .submit-button:hover {
@@ -626,29 +625,179 @@
       background: linear-gradient(135deg, #2c5aa0 0%, #1a365d 100%);
     }
 
-    .form-error {
-      border: 2px solid #dc3545 !important;
-      box-shadow: 0 0 8px rgba(220, 53, 69, 0.6) !important;
+    /* ========================================
+       STYLES POUR LE FORMULAIRE MULTI-ÉTAPES
+       ======================================== */
+
+    /* NOUVEL INDICATEUR D'ÉTAPES */
+    .step-indicator-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 30px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
-    .form-error {
-      border: 2px solid #dc3545 !important;
-      box-shadow: 0 0 8px rgba(220, 53, 69, 0.6) !important;
+    .step-indicator {
+        flex: 1;
+        text-align: center;
     }
 
-    .form-error {
-      border: 2px solid #dc3545 !important;
-      box-shadow: 0 0 8px rgba(220, 53, 69, 0.6) !important;
+    .step-line {
+        height: 3px;
+        background-color: #e9ecef; /* Ligne de base grise */
+        border-radius: 2px;
+        transition: all 0.4s ease;
     }
 
-    .form-error {
-      border: 2px solid #dc3545 !important;
-      box-shadow: 0 0 8px rgba(220, 53, 69, 0.6) !important;
+    .step-indicator.active .step-line {
+        background-color: #007bff; /* Ligne active bleue */
     }
 
-    .form-error {
-      border: 2px solid #dc3545 !important;
-      box-shadow: 0 0 8px rgba(220, 53, 69, 0.6) !important;
+    .step-indicator.completed .step-line {
+        height: 5px; /* Ligne complétée plus épaisse */
+        background-color: #28a745; /* Ligne complétée verte */
+    }
+
+    .step-title {
+        margin-top: 8px;
+        font-size: 0.8em;
+        color: #6c757d;
+        font-weight: normal;
+        transition: all 0.4s ease;
+    }
+
+    .step-indicator.active .step-title {
+        font-weight: bold;
+        color: #000;
+    }
+
+    .step-indicator.completed .step-title {
+        font-weight: bold;
+        color: #28a745;
+    }
+
+    .form-container {
+        display: flex;
+        width: 800%; /* 100% * 8 étapes */
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .form-step {
+        width: 12.5%; /* 100% / 8 étapes */
+        padding: 0 15px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 180px;
+    }
+
+    .form-navigation {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    .navigation-button {
+        padding: 12px 30px;
+        border-radius: 25px;
+        border: none;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    #prevBtn {
+        background-color: #6c757d;
+        color: white;
+    }
+
+    #nextBtn {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .navigation-button:hover, .submit-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .error-message {
+        color: #dc3545;
+        font-size: 0.9em;
+        margin-top: 5px;
+        height: 15px;
+        text-align: left;
+    }
+
+    input.invalid, select.invalid {
+        border-color: #dc3545 !important;
+    }
+
+    /* ========================================
+       STYLES POUR LA MODALE DE SUCCÈS
+       ======================================== */
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .modal-content {
+        background-color: white;
+        padding: 40px;
+        border-radius: 15px;
+        text-align: center;
+        max-width: 400px;
+        width: 90%;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        transform: scale(0.8);
+        transition: transform 0.3s ease;
+        position: relative;
+    }
+
+    .modal-icon {
+        font-size: 4em;
+        color: #28a745;
+        margin-bottom: 20px;
+    }
+
+    .modal-content h2 {
+        color: #333 !important;
+        font-style: normal !important;
+        font-size: 2em !important;
+    }
+
+    .modal-content p {
+        color: #555 !important;
+        font-size: 1.1em !important;
+        text-align: center !important;
+    }
+
+    .modal-close-btn {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 1.8em;
+        color: #aaa;
+        cursor: pointer;
+        transition: color 0.2s ease;
+    }
+
+    .modal-close-btn:hover {
+        color: #333;
     }
     
     /* Section Témoignages */
@@ -870,12 +1019,6 @@
       }
     }
   </style>
-  
-  <!-- Méta-balises de sécurité -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data:; font-src 'self' https://cdnjs.cloudflare.com; form-action 'self' https://formspree.io; frame-ancestors 'self';">
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <meta http-equiv="X-Frame-Options" content="DENY">
-  <meta name="referrer" content="no-referrer-when-downgrade">
 </head>
 
 <body>
@@ -1111,76 +1254,148 @@
   
   <!-- Section Inscription -->
   <section class="inscription-section" id="inscription">
-    <!-- Rectangle blanc pour le contenu - même style que Notre Cabinet -->
     <div class="inscription-content">
       <h2 data-fr="Commencez Votre Projet" data-en="Start Your Project">Commencez Votre Projet</h2>
-      <p data-fr="Inscrivez-vous dès maintenant pour accéder à nos services professionnels d'analyse de données. Vous recevrez un email de bienvenue avec toutes les informations nécessaires pour sélectionner vos services." data-en="Register now to access our professional data analysis services. You will receive a welcome email with all the necessary information to select your services.">
-        Inscrivez-vous dès maintenant pour accéder à nos services professionnels d'analyse de données.
-        Vous recevrez un email de bienvenue avec toutes les informations nécessaires pour sélectionner vos services.
+      <p data-fr="Bienvenue chez MathEcoStatAnalysis. Remplissez ce formulaire pour créer votre profil client et recevez en bonus notre guide exclusif : <strong>5 astuces pour automatiser vos analyses de données</strong>." data-en="Welcome to MathEcoStatAnalysis. Fill out this form to create your client profile and receive our exclusive bonus guide: <strong>5 Tips to Automate Your Data Analysis</strong>.">
+        Bienvenue chez MathEcoStatAnalysis. Remplissez ce formulaire pour créer votre profil client et recevez en bonus notre guide exclusif : <strong>5 astuces pour automatiser vos analyses de données</strong>.
       </p>
     </div>
-    
-        <div class="inscription-form">
-      <form id="inscriptionForm">
-        <div id="form-status" style="margin-bottom: 20px; font-size: 1.1em; color: #333; font-weight: bold; text-align: center;"></div>
-        <div class="form-group">
-          <label for="nom" data-fr="Nom complet *" data-en="Full Name *">Nom complet *</label>
-          <input type="text" id="nom" name="entry.230115419" required>
+
+    <!-- Indicateur de progression à base de traits -->
+    <div class="step-indicator-container" id="stepIndicatorContainer">
+        <!-- Les indicateurs seront générés par JavaScript -->
+    </div>
+
+    <form id="inscriptionForm" class="inscription-form" action="https://script.google.com/macros/s/AKfycbydiCoH90scl1AJdYONVilvPQbp4rrZPBYshZiadsIgL2z-5jSAPzUcSFZsL4kkpBEzug/exec" method="POST" novalidate>
+        <div class="form-container">
+            <!-- Étape 1: Nom complet -->
+            <div class="form-step">
+                <div class="form-group">
+                    <label for="nom" data-fr="Nom complet" data-en="Full Name">Quel est votre nom complet ? <span style="color:red;">*</span></label>
+                    <input type="text" id="nom" name="Nom complet" placeholder="Ex: OUEDRAOGO Carel Junior" required>
+                    <small class="form-text text-muted" data-fr="Ce champ est requis." data-en="This field is required.">Ce champ est requis.</small>
+                    <div class="error-message"></div>
+                </div>
+            </div>
+
+            <!-- Étape 2: Adresse email -->
+            <div class="form-step">
+                <div class="form-group">
+                    <label for="email" data-fr="Adresse Email" data-en="Email Address">Et votre adresse e-mail ? <span style="color:red;">*</span></label>
+                    <input type="email" id="email" name="Adresse email" placeholder="Ex: nom@exemple.com" required>
+                    <small class="form-text text-muted" data-fr="Veuillez entrer une adresse email valide." data-en="Please enter a valid email address.">Veuillez entrer une adresse email valide.</small>
+                    <div class="error-message"></div>
+                </div>
+            </div>
+
+            <!-- Étape 3: Indicatif pays -->
+            <div class="form-step">
+                <div class="form-group">
+                    <label for="indicatif" data-fr="Indicatif pays" data-en="Country Code">Quel est l'indicatif de votre pays ? <span style="color:red;">*</span></label>
+                    <select id="indicatif" name="Indicatif pays" required>
+                        <option value="" disabled selected>Sélectionnez...</option>
+                        <option value="+226">+226 (Burkina Faso)</option>
+                        <option value="+225">+225 (Côte d’Ivoire)</option>
+                        <option value="+223">+223 (Mali)</option>
+                        <option value="+221">+221 (Sénégal)</option>
+                        <option value="+228">+228 (Togo)</option>
+                        <option value="+229">+229 (Bénin)</option>
+                        <option value="Autre">Autre</option>
+                    </select>
+                    <input type="text" id="indicatif_autre" name="Indicatif pays (précisé)" placeholder="Précisez l'indicatif" style="display:none; margin-top:10px;">
+                    <small class="form-text text-muted" data-fr="Sélectionnez ou précisez votre indicatif." data-en="Select or specify your country code.">Sélectionnez ou précisez votre indicatif.</small>
+                    <div class="error-message"></div>
+                </div>
+            </div>
+
+            <!-- Étape 4: Numéro de téléphone -->
+            <div class="form-step">
+                <div class="form-group">
+                    <label for="telephone" data-fr="Numéro de téléphone" data-en="Phone Number">Votre numéro de téléphone (sans l'indicatif) ? <span style="color:red;">*</span></label>
+                    <input type="tel" id="telephone" name="Numéro de téléphone" placeholder="Ex: 56109055" required pattern="[0-9]{8,12}">
+                    <small class="form-text text-muted" data-fr="Numéro de 8 à 12 chiffres." data-en="8 to 12 digit number.">Numéro de 8 à 12 chiffres.</small>
+                    <div class="error-message"></div>
+                </div>
+            </div>
+
+            <!-- Étape 5: Entreprise -->
+            <div class="form-step">
+                <div class="form-group">
+                    <label for="entreprise" data-fr="Entreprise / Organisation (facultatif)" data-en="Company / Organization (optional)">Pour quelle entreprise ou organisation travaillez-vous ?</label>
+                    <input type="text" id="entreprise" name="Entreprise / Organisation" placeholder="(Facultatif)">
+                    <small class="form-text text-muted" data-fr="Ce champ est optionnel." data-en="This field is optional.">Ce champ est optionnel.</small>
+                    <div class="error-message"></div>
+                </div>
+            </div>
+
+            <!-- Étape 6: Secteur d’activité -->
+            <div class="form-step">
+                <div class="form-group">
+                    <label for="secteur" data-fr="Secteur d’activité" data-en="Business Sector">Dans quel secteur d’activité êtes-vous ? <span style="color:red;">*</span></label>
+                    <select id="secteur" name="Secteur d’activité" required>
+                        <option value="" disabled selected>Sélectionnez votre secteur</option>
+                        <option value="Finance & Banque">Finance & Banque</option>
+                        <option value="Santé">Santé</option>
+                        <option value="Éducation">Éducation</option>
+                        <option value="Agriculture">Agriculture</option>
+                        <option value="Commerce">Commerce</option>
+                        <option value="ONG">ONG</option>
+                        <option value="Gouvernement">Gouvernement</option>
+                        <option value="Autre">Autre</option>
+                    </select>
+                    <input type="text" id="secteur_autre" name="Secteur d’activité (précisé)" placeholder="Précisez votre secteur" style="display:none; margin-top:10px;">
+                    <small class="form-text text-muted" data-fr="Sélectionnez votre secteur d'activité." data-en="Select your business sector.">Sélectionnez votre secteur d'activité.</small>
+                    <div class="error-message"></div>
+                </div>
+            </div>
+
+            <!-- Étape 7: Message -->
+            <div class="form-step">
+                <div class="form-group">
+                    <label for="message" data-fr="Votre message (optionnel)" data-en="Your Message (optional)">Avez-vous un message pour nous ?</label>
+                    <textarea id="message" name="Message (optionnel)" rows="3" placeholder="Décrivez brièvement votre projet ou votre besoin..."></textarea>
+                    <small class="form-text text-muted" data-fr="Ce champ est optionnel." data-en="This field is optional.">Ce champ est optionnel.</small>
+                    <div class="error-message"></div>
+                </div>
+            </div>
+
+            <!-- Étape 8: Confirmation -->
+            <div class="form-step">
+                <div class="form-group">
+                    <label data-fr="Confirmation" data-en="Confirmation">Prêt à envoyer ?</label>
+                    <div class="form-group" style="display: flex; align-items: center; gap: 10px;">
+                        <input type="checkbox" id="newsletter" name="Je souhaite également recevoir des conseils et astuces par e-mail" value="Oui" checked style="width: auto;">
+                        <label for="newsletter" style="margin-bottom: 0; font-weight: normal;" data-fr="Je souhaite également recevoir des conseils et astuces par e-mail" data-en="I would also like to receive tips and tricks by email">Je souhaite également recevoir des conseils et astuces par e-mail</label>
+                    </div>
+                    <p data-fr="Cliquez sur 'Envoyer' pour finaliser et recevoir votre guide." data-en="Click 'Send' to finalize and receive your guide.">Cliquez sur 'Envoyer' pour finaliser et recevoir votre guide.</p>
+                </div>
+            </div>
         </div>
-        
-        <div class="form-group">
-          <label for="email" data-fr="Adresse email *" data-en="Email Address *">Adresse email *</label>
-          <input type="email" id="email" name="entry.2095353114" required>
+
+        <!-- Boutons de navigation -->
+        <div class="form-navigation">
+            <button type="button" id="prevBtn" class="navigation-button" style="display: none;" data-fr="Précédent" data-en="Previous">Précédent</button>
+            <button type="button" id="nextBtn" class="navigation-button" data-fr="Suivant" data-en="Next">Suivant</button>
+            <button type="submit" id="submitBtn" class="submit-button" style="display: none;" data-fr="Envoyer et recevoir mon guide" data-en="Send and Receive My Guide">Envoyer et recevoir mon guide</button>
         </div>
-        
-        <div class="form-group">
-          <label for="telephone" data-fr="Numéro de téléphone *" data-en="Phone Number *">Numéro de téléphone *</label>
-          <div style="display: flex; gap: 10px;">
-            <select id="indicatif" name="entry.481173466" style="width: 120px; padding: 12px 15px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1em; color: #000000; background-color: #ffffff;">
-              <option value="+226 (Burkina Faso)">+226 (Burkina Faso)</option>
-              <option value="+225 (Côte d'Ivoire)">+225 (Côte d'Ivoire)</option>
-              <option value="+223 (Mali)">+223 (Mali)</option>
-              <option value="+221 (Sénégal)">+221 (Sénégal)</option>
-              <option value="+228 (Togo)">+228 (Togo)</option>
-              <option value="+229 (Bénin)">+229 (Bénin)</option>
-              <option value="Autre (à préciser)">Autre (à préciser)</option>
-            </select>
-            <input type="tel" id="telephone" name="entry.338607952" required placeholder="XX XX XX XX" style="flex: 1; padding: 12px 15px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1em; color: #000000; background-color: #ffffff;">
-          </div>
-          <small style="color: #333; margin-top: 8px; display: block;" data-fr="Si vous sélectionnez 'Autre', veuillez préciser l'indicatif dans le message optionnel." data-en="If you select 'Other', please specify the country code in the optional message.">Si vous sélectionnez 'Autre', veuillez préciser l'indicatif dans le message optionnel.</small>
+    </form>
+
+    <!-- Modale de succès -->
+    <div id="success-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close-btn">&times;</span>
+            <div class="modal-icon"><i class="fas fa-check-circle"></i></div>
+            <h2 data-fr="Merci !" data-en="Thank you!">Merci !</h2>
+            <p data-fr="Votre message a bien été envoyé. Nous vous contacterons bientôt." data-en="Your message has been sent successfully. We will contact you shortly.">Votre message a bien été envoyé. Nous vous contacterons bientôt.</p>
         </div>
-        
-        <div class="form-group">
-          <label for="entreprise" data-fr="Entreprise/Organisation" data-en="Company/Organization">Entreprise/Organisation</label>
-          <input type="text" id="entreprise" name="entry.672647585" placeholder="Nom de votre entreprise (optionnel)" data-fr-placeholder="Nom de votre entreprise (optionnel)" data-en-placeholder="Name of your company (optional)">
-        </div>
-        
-        <div class="form-group">
-          <label for="secteur" data-fr="Secteur d'activité" data-en="Sector of Activity">Secteur d'activité</label>
-          <select id="secteur" name="entry.1908399333">
-            <option value="" data-fr="Sélectionnez votre secteur" data-en="Select your sector">Sélectionnez votre secteur</option>
-            <option value="Finance & Banque" data-fr="Finance & Banque" data-en="Finance & Banking">Finance & Banque</option>
-            <option value="Santé" data-fr="Santé" data-en="Health">Santé</option>
-            <option value="Éducation" data-fr="Éducation" data-en="Education">Éducation</option>
-            <option value="Agriculture" data-fr="Agriculture" data-en="Agriculture">Agriculture</option>
-            <option value="Commerce" data-fr="Commerce" data-en="Commerce">Commerce</option>
-            <option value="ONG" data-fr="ONG" data-en="NGO">ONG</option>
-            <option value="Gouvernement" data-fr="Gouvernement" data-en="Government">Gouvernement</option>
-            
-          </select>
-        </div>
-        
-        <div class="form-group">
-          <label for="message" data-fr="Message (optionnel)" data-en="Message (optional)">Message (optionnel)</label>
-          <textarea id="message" name="entry.1756453778" rows="4" placeholder="Décrivez brièvement vos besoins en analyse de données..." data-fr-placeholder="Décrivez brièvement vos besoins en analyse de données..." data-en-placeholder="Briefly describe your data analysis needs..."></textarea>
-        </div>
-        
-        <button type="submit" class="submit-button">
-          <i class="fas fa-paper-plane"></i> <span data-fr="S'inscrire et Commencer" data-en="Register and Get Started">S'inscrire et Commencer</span>
-        </button>
-      </form>
     </div>
   </section>
+  
+  <!-- ... (le reste du body après la section inscription) ... -->
+  </body>
+</html>
+
+
   
   
   <!-- Footer -->
@@ -1207,7 +1422,7 @@
         <a href="https://www.linkedin.com/in/wendsom-armand-judicael-compaore" target="_blank" class="contact-icon contact-linkedin" title="LinkedIn" style="display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; background: #0077b5; color: white; text-decoration: none; font-size: 1.5em; transition: all 0.3s ease;">
           <i class="fab fa-linkedin"></i>
         </a>
-        <a href="https://github.com/Wendsom" target="_blank" rel="noopener noreferrer" class="contact-icon contact-github" title="GitHub" style="display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; background: #333; color: white; text-decoration: none; font-size: 1.5em; transition: all 0.3s ease;">
+        <a href="https://github.com/Wendsom" target="_blank" class="contact-icon contact-github" title="GitHub" style="display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; background: #333; color: white; text-decoration: none; font-size: 1.5em; transition: all 0.3s ease;">
           <i class="fab fa-github"></i>
         </a>
       </div>
@@ -1225,187 +1440,285 @@
   
   <!-- Scripts -->
   <script>
-    // Gestion du formulaire d'inscription simplifié pour Google Forms
-    const secteurSelect = document.getElementById('secteur');
-
-    // Supprime le style d'erreur quand l'utilisateur change la sélection
-    secteurSelect.addEventListener('change', function() {
-      secteurSelect.classList.remove('form-error');
-    });
-
-    document.getElementById('inscriptionForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      const form = e.target;
-      const formData = new FormData(form);
-      const statusDiv = document.getElementById('form-status');
-      const submitButton = form.querySelector('.submit-button');
-
-      // Validation pour le champ Secteur d'activité
-      const secteurValue = formData.get('entry.1908399333');
-      if (!secteurValue || secteurValue.trim() === "") {
-        statusDiv.textContent = 'Veuillez sélectionner un secteur d\'activité.';
-        statusDiv.style.color = '#ffc107'; // Jaune pour avertissement
-        secteurSelect.focus(); // Met en surbrillance le champ
-        secteurSelect.classList.add('form-error'); // Ajoute la classe d'erreur
-        return; // Arrête la soumission
-      }
-      
-      // Désactiver le bouton et afficher un message de chargement
-      submitButton.disabled = true;
-      submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
-      statusDiv.textContent = '';
-      statusDiv.style.color = '#333';
-
-      // URL du Google Form
-      const googleFormUrl = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSeOiPnS6Ie4aNvkKmS03gBNq6ysK481aH9reVS3Ceybvv2W4Q/formResponse';
-
-      fetch(googleFormUrl, {
-        method: 'POST',
-        body: formData,
-        mode: 'no-cors' // Important pour éviter les erreurs CORS avec Google Forms
-      }).then(() => {
-        // Succès
-        statusDiv.textContent = 'Merci ! Votre inscription a été soumise avec succès.';
-        statusDiv.style.color = '#28a745'; // Vert pour succès
-        form.reset(); // Réinitialiser le formulaire
-      }).catch(error => {
-        // Erreur
-        statusDiv.textContent = 'Une erreur est survenue. Veuillez réessayer.';
-        statusDiv.style.color = '#dc3545'; // Rouge pour erreur
-        console.error('Erreur lors de la soumission :', error);
-      }).finally(() => {
-        // Réactiver le bouton
-        submitButton.disabled = false;
-        // Restaurer le texte original du bouton en utilisant les attributs de langue
-        const lang = document.documentElement.lang || 'fr';
-        const buttonText = lang === 'fr' ? "S'inscrire et Commencer" : "Register and Get Started";
-        const span = document.createElement('span');
-        span.setAttribute(`data-fr`, "S'inscrire et Commencer");
-        span.setAttribute(`data-en`, "Register and Get Started");
-        span.textContent = buttonText;
-        submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> ';
-        submitButton.appendChild(span);
-      });
-    });
-
-    // Animation au scroll
-    window.addEventListener('scroll', function() {
-      const cards = document.querySelectorAll('.service-card');
-      cards.forEach(card => {
-        const rect = card.getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
-          card.style.opacity = '1';
-          card.style.transform = 'translateY(0)';
-        }
-      });
-    });
-
-    // Initialisation des animations
     document.addEventListener('DOMContentLoaded', function() {
-      const cards = document.querySelectorAll('.service-card');
-      cards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      });
-    });
-
-    // Smooth scroll pour les liens d'ancrage
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    });
-
-    // Gestion de la navbar (apparition/disparition au scroll)
-    let lastScrollTop = 0;
+    // =================================================================================
+    // INITIALISATION GLOBALE
+    // =================================================================================
+    const inscriptionForm = document.getElementById('inscriptionForm');
     const navbar = document.getElementById('navbar');
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+
+    // =================================================================================
+    // LOGIQUE DU FORMULAIRE MULTI-ÉTAPES
+    // =================================================================================
+    if (inscriptionForm) {
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const submitBtn = document.getElementById('submitBtn');
+        const formContainer = inscriptionForm.querySelector('.form-container');
+        const steps = Array.from(inscriptionForm.querySelectorAll('.form-step'));
+        const stepIndicatorContainer = document.getElementById('stepIndicatorContainer');
+        const successModal = document.getElementById('success-modal');
+        const closeModalBtn = successModal.querySelector('.modal-close-btn');
+        const scriptURL = inscriptionForm.action;
+
+        let currentStep = 0;
+        const totalSteps = steps.length;
+        const stepTitles = ['Nom', 'Email', 'Pays', 'Téléphone', 'Entreprise', 'Secteur', 'Message', 'Envoi'];
+
+        // --- Génération et gestion des indicateurs d'étape ---
+        stepIndicatorContainer.innerHTML = ''; // Vider le conteneur
+        stepTitles.forEach(title => {
+            const indicator = document.createElement('div');
+            indicator.classList.add('step-indicator');
+            indicator.innerHTML = `<div class="step-line"></div><div class="step-title">${title}</div>`;
+            stepIndicatorContainer.appendChild(indicator);
+        });
+        const stepIndicators = Array.from(stepIndicatorContainer.querySelectorAll('.step-indicator'));
+
+
+        // --- Gestion des champs "Autre" ---
+        const indicatifSelect = document.getElementById('indicatif');
+        const indicatifAutreInput = document.getElementById('indicatif_autre');
+        const secteurSelect = document.getElementById('secteur');
+        const secteurAutreInput = document.getElementById('secteur_autre');
+
+        if(indicatifSelect) {
+            indicatifSelect.addEventListener('change', function() {
+                const isOther = this.value === 'Autre';
+                indicatifAutreInput.style.display = isOther ? 'block' : 'none';
+                indicatifAutreInput.required = isOther;
+            });
+        }
+
+        if(secteurSelect) {
+            secteurSelect.addEventListener('change', function() {
+                const isOther = this.value === 'Autre';
+                secteurAutreInput.style.display = isOther ? 'block' : 'none';
+                secteurAutreInput.required = isOther;
+            });
+        }
+
+        // --- Navigation ---
+        nextBtn.addEventListener('click', () => {
+            if (validateStep(currentStep)) {
+                if (currentStep < totalSteps - 1) {
+                    currentStep++;
+                    updateFormView();
+                }
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentStep > 0) {
+                currentStep--;
+                updateFormView();
+            }
+        });
+
+        // --- Mise à jour de l'affichage ---
+        function updateFormView() {
+            formContainer.style.transform = `translateX(-${currentStep * (100 / totalSteps)}%)`;
+
+            stepIndicators.forEach((indicator, index) => {
+                indicator.classList.remove('active', 'completed');
+                if (index < currentStep) {
+                    indicator.classList.add('completed');
+                } else if (index === currentStep) {
+                    indicator.classList.add('active');
+                }
+            });
+
+            prevBtn.style.display = currentStep > 0 ? 'inline-block' : 'none';
+            nextBtn.style.display = currentStep < totalSteps - 1 ? 'inline-block' : 'none';
+            submitBtn.style.display = currentStep === totalSteps - 1 ? 'inline-block' : 'none';
+        }
+
+        // --- Validation ---
+        function validateStep(stepIndex) {
+            const currentStepFields = steps[stepIndex].querySelectorAll('[required]');
+            let isValid = true;
+            currentStepFields.forEach(field => {
+                const errorDiv = field.parentElement.querySelector('.error-message');
+                field.classList.remove('invalid');
+                if (errorDiv) errorDiv.textContent = '';
+
+                if (!field.checkValidity()) {
+                    isValid = false;
+                    field.classList.add('invalid');
+                    if (errorDiv) {
+                        errorDiv.textContent = field.validationMessage;
+                    }
+                }
+            });
+            return isValid;
+        }
+
+        // --- Soumission du formulaire ---
+        inscriptionForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (!validateStep(currentStep)) return;
+
+            submitBtn.disabled = true;
+            const lang = document.documentElement.lang || 'fr';
+            const sendingText = lang === 'fr' ? "Envoi en cours..." : "Sending...";
+            submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${sendingText}`;
+
+            const formData = new FormData();
+            const formElements = inscriptionForm.elements;
+
+            for (let i = 0; i < formElements.length; i++) {
+                const field = formElements[i];
+                if (!field.name || field.type === 'submit' || field.type === 'button') continue;
+
+                if (field.type === 'checkbox') {
+                    if (field.checked) formData.append(field.name, field.value);
+                } else if (field.name === 'Indicatif pays' && field.value === 'Autre') {
+                    formData.append(field.name, indicatifAutreInput.value || 'Autre non précisé');
+                } else if (field.name === 'Secteur d’activité' && field.value === 'Autre') {
+                    formData.append(field.name, secteurAutreInput.value || 'Autre non précisé');
+                } else if (!field.name.includes('(précisé)')) {
+                    formData.append(field.name, field.value);
+                }
+            }
+
+            fetch(scriptURL, { method: 'POST', body: formData })
+                .then(response => {
+                    if (response.ok) {
+                        showSuccessModal();
+                    } else {
+                        throw new Error('Network response was not ok.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erreur!', error.message);
+                    alert("Une erreur est survenue. Veuillez réessayer.");
+                })
+                .finally(() => {
+                    const buttonText = lang === 'fr' ? "Envoyer et recevoir mon guide" : "Send and Receive My Guide";
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = buttonText;
+                });
+        });
+
+        // --- Modale de succès ---
+        function showSuccessModal() {
+            successModal.style.display = 'flex';
+            setTimeout(() => {
+                successModal.style.opacity = '1';
+                successModal.querySelector('.modal-content').style.transform = 'scale(1)';
+            }, 10);
+        }
+
+        function hideSuccessModal() {
+            successModal.style.opacity = '0';
+            successModal.querySelector('.modal-content').style.transform = 'scale(0.8)';
+            setTimeout(() => {
+                successModal.style.display = 'none';
+                inscriptionForm.reset();
+                currentStep = 0;
+                updateFormView();
+                indicatifAutreInput.style.display = 'none';
+                secteurAutreInput.style.display = 'none';
+            }, 300);
+        }
+
+        closeModalBtn.addEventListener('click', hideSuccessModal);
+        successModal.addEventListener('click', (e) => {
+            if (e.target === successModal) {
+                hideSuccessModal();
+            }
+        });
+
+        // Initialiser la vue du formulaire
+        updateFormView();
+
+        // --- Empêcher la soumission avec la touche Entrée ---
+        inscriptionForm.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                // Empêche la soumission par défaut du formulaire
+                e.preventDefault();
+                
+                // Si le bouton "Suivant" est visible, simule un clic dessus
+                if (nextBtn.style.display !== 'none') {
+                    nextBtn.click();
+                } 
+                // Si c'est la dernière étape et que le bouton de soumission est visible
+                else if (submitBtn.style.display !== 'none') {
+                    // Ne fait rien, attend que l'utilisateur clique sur le bouton d'envoi
+                    // ou soumette via le clic. On peut aussi déclencher la soumission ici si on le souhaite.
+                    // Pour la sécurité, il est mieux de laisser l'utilisateur cliquer.
+                }
+            }
+        });
+    }
+
+    // =================================================================================
+    // AUTRES SCRIPTS DE LA PAGE (SCROLL, NAVBAR, ETC.)
+    // =================================================================================
+    let lastScrollTop = 0;
     const scrollThreshold = 100;
 
     function handleNavbarScroll() {
-      const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      
-      if (currentScrollTop > lastScrollTop && currentScrollTop > scrollThreshold) {
-        navbar.style.transform = 'translateY(-100%)';
-      } else {
-        navbar.style.transform = 'translateY(0)';
-      }
-      
-      lastScrollTop = currentScrollTop;
+        const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        if (navbar) {
+            if (currentScrollTop > lastScrollTop && currentScrollTop > scrollThreshold) {
+                navbar.style.transform = 'translateY(-100%)';
+            } else {
+                navbar.style.transform = 'translateY(0)';
+            }
+        }
+        lastScrollTop = currentScrollTop;
     }
 
-    window.addEventListener('scroll', handleNavbarScroll, { passive: true });
-
-    // Gestion du bouton de retour en haut
-    const scrollToTopBtn = document.getElementById('scrollToTop');
-    
     function toggleScrollButton() {
-      if (window.pageYOffset > 300) {
-        scrollToTopBtn.style.opacity = '1';
-        scrollToTopBtn.style.visibility = 'visible';
-      } else {
-        scrollToTopBtn.style.opacity = '0';
-        scrollToTopBtn.style.visibility = 'hidden';
-      }
+        if (scrollToTopBtn) {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.style.opacity = '1';
+                scrollToTopBtn.style.visibility = 'visible';
+            } else {
+                scrollToTopBtn.style.opacity = '0';
+                scrollToTopBtn.style.visibility = 'hidden';
+            }
+        }
     }
-    
+
     function scrollToTop() {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-    
-    window.addEventListener('scroll', toggleScrollButton);
-    scrollToTopBtn.addEventListener('click', scrollToTop);
 
-    // Effet hover pour les liens de navigation
-    document.querySelectorAll('nav a').forEach(link => {
-      link.addEventListener('mouseenter', function() {
-        if (!this.style.background) {
-          this.style.color = '#ffd700';
-        }
-      });
-      
-      link.addEventListener('mouseleave', function() {
-        if (!this.style.background) {
-          this.style.color = '#f0f0f0';
-        }
-      });
+    window.addEventListener('scroll', () => {
+        handleNavbarScroll();
+        toggleScrollButton();
     });
-
-    // Script de traduction
-    function changeLanguage(lang) {
-      document.querySelectorAll('[data-fr][data-en]').forEach(element => {
-        element.innerHTML = element.getAttribute(`data-${lang}`);
-      });
-      document.querySelectorAll('[data-fr-placeholder][data-en-placeholder]').forEach(element => {
-        element.placeholder = element.getAttribute(`data-${lang}-placeholder`);
-      });
-      document.documentElement.lang = lang;
-      localStorage.setItem('language', lang);
-      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-      document.querySelector(`.lang-btn[data-lang='${lang}']`).classList.add('active');
+    if (scrollToTopBtn) {
+        scrollToTopBtn.addEventListener('click', scrollToTop);
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-      const userLang = localStorage.getItem('language') || 'fr';
-      changeLanguage(userLang);
-
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          changeLanguage(btn.getAttribute('data-lang'));
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         });
-      });
     });
-  </script>
+
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('mouseenter', function() {
+            if (!this.style.background) this.style.color = '#ffd700';
+        });
+        link.addEventListener('mouseleave', function() {
+            if (!this.style.background) this.style.color = '#f0f0f0';
+        });
+    });
+});
+</script>
+
+<!-- Script de traduction externe -->
+<script src="../translator.js"></script>
+</body>
+</html>nslator.js"></script>
 </body>
 </html>

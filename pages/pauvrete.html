@@ -22,13 +22,21 @@
   <meta name="referrer" content="no-referrer-when-downgrade">
 </head>
 <body>
-  <!-- Sélecteur de langue -->
+  <!-- 
+    Sélecteur de langue
+    Permet à l'utilisateur de choisir entre le français et l'anglais.
+    Le script de traduction (`translator.js`) se charge de la logique.
+  -->
   <div class="language-selector" style="position: fixed; top: 20px; right: 20px; z-index: 1000;">
     <button class="lang-btn active" data-lang="fr">🇫🇷 FR</button>
     <button class="lang-btn" data-lang="en">🇺🇸 EN</button>
   </div>
 
-  <!-- Bouton de retour au portfolio -->
+  <!-- 
+    Bouton de retour au portfolio
+    Ce lien permet de revenir à la page d'accueil.
+    Le texte est traduisible grâce aux attributs `data-fr` et `data-en`.
+  -->
   <a href="../index.html" class="back-to-portfolio" data-fr="&larr; Retour au portfolio" data-en="&larr; Back to portfolio">&larr; Retour au portfolio</a>
 
   <section>
@@ -37,45 +45,11 @@
     <p data-fr="Étude sur les indicateurs de pauvreté." data-en="Study on poverty indicators.">Étude sur les indicateurs de pauvreté.</p>
   </section>
 
-  <!-- Script pour la traduction -->
-  <script>
-    // Fonction pour changer la langue
-    function changeLanguage(lang) {
-      // Mettre à jour les boutons de langue
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.remove('active');
-      });
-      document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
-      
-      // Traduire tous les éléments avec des attributs data-fr et data-en
-      document.querySelectorAll('[data-fr][data-en]').forEach(element => {
-        if (lang === 'en') {
-          element.textContent = element.getAttribute('data-en');
-        } else {
-          element.textContent = element.getAttribute('data-fr');
-        }
-      });
-      
-      // Sauvegarder la préférence de langue
-      localStorage.setItem('preferred-language', lang);
-    }
-    
-    // Ajouter les événements aux boutons de langue
-    document.addEventListener('DOMContentLoaded', function() {
-      const langButtons = document.querySelectorAll('.lang-btn');
-      langButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
-          const lang = this.getAttribute('data-lang');
-          changeLanguage(lang);
-        });
-      });
-      
-      // Restaurer la langue préférée
-      const savedLang = localStorage.getItem('preferred-language');
-      if (savedLang && savedLang !== 'fr') {
-        changeLanguage(savedLang);
-      }
-    });
-  </script>
+  <!-- 
+    Script de traduction externe
+    Charge le fichier `translator.js` qui gère la logique de traduction de la page.
+    Ce script est partagé entre toutes les pages du site.
+  -->
+  <script src="../translator.js"></script>
 </body>
 </html>
