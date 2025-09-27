@@ -8,7 +8,6 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Police de caractères */
   color: #f0f0f0; /* Couleur du texte en blanc cassé */
   background: radial-gradient(#0d1b2a, #1b263b); /* Dégradé radial du noir vers bleu foncé */
-  background-attachment: fixed; /* L'arrière-plan reste fixe lors du scroll */
   position: relative; /* Position relative pour les éléments enfants */
   padding-top: 60px; /* Espace en haut pour éviter que le contenu passe sous la navbar */
   overflow-x: hidden; /* Empêche le défilement horizontal */
