@@ -2,7 +2,7 @@
  * @file translator.js
  * @description Gère la traduction de la page entre le français et l'anglais.
  * @author Wendsom COMPAORÉ
- * @version 1.1.0
+ * @version 1.2.0
  */
 
 /**
@@ -42,6 +42,11 @@ function changeLanguage(lang) {
   const activeBtn = document.querySelector(`.lang-btn[data-lang='${lang}']`);
   if (activeBtn) {
     activeBtn.classList.add('active');
+  }
+
+  // Traduit les options de pays
+  if (typeof translateCountryOptions === 'function') {
+    translateCountryOptions(lang);
   }
 }
 
