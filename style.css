@@ -1108,20 +1108,6 @@ img, .project-image, .profile-pic {
 }
 
 /* Navigation responsive */
-#theme-toggle {
-  position: fixed;
-  top: 18px;
-  right: 24px;
-  z-index: 1100;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: #f0f0f0;
-  padding: 6px 10px;
-  border-radius: 15px;
-  cursor: pointer;
-  font-size: 1.2em;
-  backdrop-filter: blur(5px);
-}
 
 .navbar ul {
   gap: 18px;
@@ -1527,4 +1513,136 @@ body.light-theme .back-to-portfolio:hover {
 .section-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ========================================
+   NEW FOOTER LANGUAGE SELECTOR
+   ======================================== */
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.language-selector-footer {
+  position: relative;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.language-selected {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  min-width: 150px;
+  justify-content: center;
+}
+
+.language-selected:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.language-selected .lang-flag {
+  font-size: 1.5em;
+}
+
+.language-selected .lang-name {
+  font-weight: 500;
+  color: #f0f0f0;
+}
+
+.language-selected .fa-chevron-down {
+  margin-left: auto;
+  transition: transform 0.3s ease;
+}
+
+.language-selected[aria-expanded="true"] .fa-chevron-down {
+  transform: rotate(180deg);
+}
+
+.language-options-dropdown {
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 10px;
+  background: #1b263b;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  z-index: 10;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.lang-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  text-decoration: none;
+  color: #f0f0f0;
+  transition: background-color 0.3s ease;
+}
+
+.lang-option:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.lang-option .lang-flag {
+  font-size: 1.5em;
+}
+
+/* Light theme styles */
+body.light-theme .language-selected {
+  background: rgba(49, 130, 206, 0.1);
+  border-color: rgba(49, 130, 206, 0.3);
+}
+
+body.light-theme .language-selected:hover {
+  background: rgba(49, 130, 206, 0.2);
+}
+
+body.light-theme .language-selected .lang-name {
+  color: #1a365d;
+}
+
+body.light-theme .language-options-dropdown {
+  background: #fff;
+  border-color: rgba(49, 130, 206, 0.3);
+  box-shadow: 0 8px 20px rgba(49, 130, 206, 0.15);
+}
+
+body.light-theme .lang-option {
+  color: #1a365d;
+}
+
+body.light-theme .lang-option:hover {
+  background-color: rgba(49, 130, 206, 0.1);
+}
+
+/* Style pour le bouton de changement de thème dans la navbar */
+.navbar #theme-toggle {
+  background: transparent;
+  border: none;
+  color: #ffd700;
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar #theme-toggle:hover {
+  color: #fff;
+  transform: scale(1.1);
 }

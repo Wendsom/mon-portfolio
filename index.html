@@ -111,11 +111,9 @@
         <li><a href="#contact" data-fr="Contacts" data-en="Contacts">Contacts</a></li>
         <li><a href="pages/math_eco_stat_analysis.html" data-fr="Services" data-en="Services">Services</a></li>
       </ul>
-      <!-- Sélecteur de langue -->
-      <div class="language-selector">
-        <button class="lang-btn active" data-lang="fr">🇫🇷 FR</button>
-        <button class="lang-btn" data-lang="en">🇺🇸 EN</button>
-      </div>
+      <button id="theme-toggle" aria-label="Changer le thème">
+        🌙
+      </button>
     </div>
   </nav>
   <div class="background-overlay"></div>
@@ -486,7 +484,7 @@
       </select>
       <!-- Champ pour le numéro WhatsApp -->
       <label for="whatsapp" data-fr="Numéro WhatsApp :" data-en="WhatsApp Number:">Numéro WhatsApp :</label>
-      <input type="tel" id="whatsapp" name="WhatsApp" required placeholder="Ex: 56109055">
+      <input type="tel" id="whatsapp" name="WhatsApp" required placeholder="Ex: 55403095">
       <!-- Bouton d'envoi -->
       <button type="submit" data-fr="Cliquez pour recevoir mon CV par mail" data-en="Click to receive my CV by email">Cliquez pour recevoir mon CV par mail</button>
     </form>
@@ -538,34 +536,104 @@
 
   <!-- Pied de page -->
   <footer role="contentinfo">
-
-  <!-- Ajoute ce bouton pour changer de thème -->
-<button id="theme-toggle" aria-label="Changer le thème">
-  🌙
-</button>
-
-<!-- Script pour gérer le changement de thème -->
-<script>
-  // Sélectionne le bouton
-  const toggleBtn = document.getElementById('theme-toggle');
-  // Fonction pour changer le thème
-  function toggleTheme() {
-    // Ajoute ou enlève la classe 'light-theme' on the body
-    document.body.classList.toggle('light-theme');
-    // Change l'icône du bouton selon le thème
-    if(document.body.classList.contains('light-theme')) {
-      toggleBtn.textContent = '☀️'; // Soleil pour le mode clair
-    } else {
-      toggleBtn.textContent = '🌙'; // Lune pour le mode sombre
-    }
-  }
-  // Ajoute l'événement au clic
-  toggleBtn.addEventListener('click', toggleTheme);
-</script>
-
-  <footer>
-    <p data-fr="&copy; 2025 Judicaël COMPAORÉ. Tous droits réservés." data-en="&copy; 2025 Judicaël COMPAORÉ. All rights reserved.">&copy; 2025 Judicaël COMPAORÉ. Tous droits réservés.</p>
+    <div class="footer-container">
+      <div class="language-selector-footer">
+        <div class="language-selected" aria-haspopup="true" aria-expanded="false" tabindex="0">
+          <span class="lang-flag">🇫🇷</span>
+          <span class="lang-name">Français</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="language-options-dropdown" role="menu">
+          <a href="#" class="lang-option" data-lang="fr" role="menuitem">
+            <span class="lang-flag">🇫🇷</span>
+            <span class="lang-name">Français</span>
+          </a>
+          <a href="#" class="lang-option" data-lang="en" role="menuitem">
+            <span class="lang-flag">🇺🇸</span>
+            <span class="lang-name">English</span>
+          </a>
+        </div>
+      </div>
+      <p data-fr="&copy; 2025 Judicaël COMPAORÉ. Tous droits réservés." data-en="&copy; 2025 Judicaël COMPAORÉ. All rights reserved.">&copy; 2025 Judicaël COMPAORÉ. Tous droits réservés.</p>
+    </div>
   </footer>
+
+  <!-- Script pour la traduction -->
+  <script>
+    // ... (le script de traduction existant reste ici)
+  </script>
+  
+  <!-- ... (autres scripts) ... -->
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+      // S'assure que l'icône est correcte au chargement
+      if (document.body.classList.contains('light-theme')) {
+        themeToggle.textContent = '☀️';
+      } else {
+        themeToggle.textContent = '🌙';
+      }
+      
+      themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('light-theme');
+        if (document.body.classList.contains('light-theme')) {
+          themeToggle.textContent = '☀️';
+        } else {
+          themeToggle.textContent = '🌙';
+        }
+      });
+    }
+
+    const langSelector = document.querySelector('.language-selector-footer');
+    if(langSelector) {
+      const selected = langSelector.querySelector('.language-selected');
+      const options = langSelector.querySelector('.language-options-dropdown');
+
+      selected.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isExpanded = selected.getAttribute('aria-expanded') === 'true';
+        selected.setAttribute('aria-expanded', !isExpanded);
+        options.style.display = isExpanded ? 'none' : 'block';
+      });
+      
+      selected.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          selected.click();
+        }
+      });
+
+      document.querySelectorAll('.lang-option').forEach(option => {
+        option.addEventListener('click', function(e) {
+          e.preventDefault();
+          const lang = this.getAttribute('data-lang');
+          
+          // Mettre à jour l'affichage du sélecteur
+          const newFlag = this.querySelector('.lang-flag').textContent;
+          const newName = this.querySelector('.lang-name').textContent;
+          selected.querySelector('.lang-flag').textContent = newFlag;
+          selected.querySelector('.lang-name').textContent = newName;
+
+          // Appeler la fonction de traduction
+          changeLanguage(lang);
+
+          // Fermer le dropdown
+          options.style.display = 'none';
+          selected.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      // Fermer le dropdown si on clique ailleurs
+      document.addEventListener('click', () => {
+        options.style.display = 'none';
+        selected.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+  </script>
+
 
   <!-- Script pour la traduction -->
   <script>
