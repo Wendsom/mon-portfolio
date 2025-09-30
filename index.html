@@ -95,6 +95,34 @@
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta http-equiv="X-Frame-Options" content="DENY">
   <meta name="referrer" content="no-referrer-when-downgrade">
+
+  <style>
+    /* Animation de défilement pour la barre de navigation sur mobile */
+    @media (max-width: 768px) {
+      .navbar .navbar-container {
+        overflow: hidden;
+        /* Effet de fondu sur les bords pour une meilleure intégration */
+        -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+      }
+
+      .navbar .navbar-container ul {
+        display: flex;
+        width: max-content; /* Permet à la liste d'être plus large que l'écran */
+        animation: marquee-scroll 20s linear infinite;
+      }
+    }
+
+    /* Animation de défilement */
+    @keyframes marquee-scroll {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-50%); /* Défile de la moitié de la largeur totale */
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- À placer juste après <body> et avant <div class="background-overlay"></div> -->
@@ -854,6 +882,23 @@
 
     form.addEventListener("submit", handleSubmit);
   });
+  </script>
+  <script>
+    // Crée une animation de défilement pour la barre de navigation sur mobile
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.innerWidth <= 768) {
+        const navList = document.querySelector('.navbar-container ul');
+        if (navList) {
+          // Dupliquer les éléments pour un défilement infini et fluide
+          const navItems = Array.from(navList.children);
+          navItems.forEach(item => {
+            const clone = item.cloneNode(true);
+            clone.setAttribute('aria-hidden', 'true');
+            navList.appendChild(clone);
+          });
+        }
+      }
+    });
   </script>
 </body>
 </html>
