@@ -44,10 +44,9 @@ function changeLanguage(lang) {
     activeBtn.classList.add('active');
   }
 
-  // Traduit les options de pays
-  if (typeof translateCountryOptions === 'function') {
-    translateCountryOptions(lang);
-  }
+  // Dispatch a custom event to notify the page of the language change
+  const event = new CustomEvent('languagechange', { detail: { lang: lang } });
+  document.dispatchEvent(event);
 }
 
 /**

@@ -1425,15 +1425,15 @@
                 <div class="form-group">
                     <label for="secteur" data-fr="Secteur d’activité" data-en="Business Sector">Dans quel secteur d’activité êtes-vous ? <span style="color:red;">*</span></label>
                     <select id="secteur" name="Secteur d’activité" required>
-                        <option value="" disabled selected>Sélectionnez votre secteur</option>
-                        <option value="Finance & Banque">Finance & Banque</option>
-                        <option value="Santé">Santé</option>
-                        <option value="Éducation">Éducation</option>
-                        <option value="Agriculture">Agriculture</option>
-                        <option value="Commerce">Commerce</option>
-                        <option value="ONG">ONG</option>
-                        <option value="Gouvernement">Gouvernement</option>
-                        <option value="Autre">Autre</option>
+                        <option value="" disabled selected data-fr="Sélectionnez votre secteur" data-en="Select your sector">Sélectionnez votre secteur</option>
+                        <option value="Finance & Banque" data-fr="Finance & Banque" data-en="Finance & Banking">Finance & Banque</option>
+                        <option value="Santé" data-fr="Santé" data-en="Health">Santé</option>
+                        <option value="Éducation" data-fr="Éducation" data-en="Education">Éducation</option>
+                        <option value="Agriculture" data-fr="Agriculture" data-en="Agriculture">Agriculture</option>
+                        <option value="Commerce" data-fr="Commerce" data-en="Commerce">Commerce</option>
+                        <option value="ONG" data-fr="ONG" data-en="NGO">ONG</option>
+                        <option value="Gouvernement" data-fr="Gouvernement" data-en="Government">Gouvernement</option>
+                        <option value="Autre" data-fr="Autre" data-en="Other">Autre</option>
                     </select>
                     <input type="text" id="secteur_autre" name="Secteur d’activité (précisé)" placeholder="Précisez votre secteur" style="display:none; margin-top:10px;">
                     <small class="form-text text-muted" data-fr="Sélectionnez votre secteur d'activité." data-en="Select your business sector.">Sélectionnez votre secteur d'activité.</small>
@@ -1621,17 +1621,27 @@
 
         let currentStep = 0;
         const totalSteps = steps.length;
-        const stepTitles = ['Nom', 'Email', 'Pays', 'Téléphone', 'Entreprise', 'Secteur', 'Message', 'Envoi'];
+        let stepIndicators; // Déclaré ici pour être accessible dans les fonctions
 
-        // --- Génération et gestion des indicateurs d'étape ---
-        stepIndicatorContainer.innerHTML = ''; // Vider le conteneur
-        stepTitles.forEach(title => {
-            const indicator = document.createElement('div');
-            indicator.classList.add('step-indicator');
-            indicator.innerHTML = `<div class="step-line"></div><div class="step-title">${title}</div>`;
-            stepIndicatorContainer.appendChild(indicator);
-        });
-        const stepIndicators = Array.from(stepIndicatorContainer.querySelectorAll('.step-indicator'));
+        const stepTitles = {
+            fr: ['Nom', 'Email', 'Pays', 'Téléphone', 'Entreprise', 'Secteur', 'Message', 'Envoi'],
+            en: ['Name', 'Email', 'Country', 'Phone', 'Company', 'Sector', 'Message', 'Send']
+        };
+
+        function updateStepIndicatorTitles(lang) {
+            const titles = stepTitles[lang] || stepTitles.fr;
+            stepIndicatorContainer.innerHTML = ''; // Vider le conteneur
+            titles.forEach(title => {
+                const indicator = document.createElement('div');
+                indicator.classList.add('step-indicator');
+                indicator.innerHTML = `<div class="step-line"></div><div class="step-title">${title}</div>`;
+                stepIndicatorContainer.appendChild(indicator);
+            });
+            stepIndicators = Array.from(stepIndicatorContainer.querySelectorAll('.step-indicator'));
+        }
+
+        // Initialiser les titres des étapes avec la langue actuelle
+        updateStepIndicatorTitles(lang);
 
 
         // --- Gestion des champs "Autre" ---
@@ -1808,6 +1818,14 @@
                 }
             }
         });
+
+        // Gérer le changement de langue pour les éléments du formulaire
+        document.addEventListener('languagechange', function(e) {
+            const lang = e.detail.lang;
+            translateCountryOptions(lang);
+            updateStepIndicatorTitles(lang);
+            updateFormView();
+        });
     }
 
     // =================================================================================
@@ -1870,6 +1888,8 @@
             if (!this.style.background) this.style.color = '#f0f0f0';
         });
     });
+
+
 });
   </script>
 </body>
